@@ -23,9 +23,7 @@ django snippets and setting tutorial
 - Django examples
   - Localization
   - Send mail
-  - Upload image
-  - Send requests to another server
-  - HMAC
+  - Make thumbnail
 
 <h2>EC2 Instance</h2>
 
@@ -277,6 +275,64 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     root $ ./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach   # Start celery beat (cron task)
     root $ ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery beat
 
+<h4>Pillow setting</h4>
+
+    root $ apt-get install imagemagick libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
+    
+    # 32bit : i386-linux-gnu, 64bit : x86_64-linux-gnu
+    root $ ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib 
+    root $ ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib 
+    root $ ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib 
+	
+    # Only for ubuntu 14.04 LTS version 
+    root $ ln -s /usr/include/freetype2 /usr/include/freetype 
+    root $ pip install pillow
+    - Check available list
+
+<h4>When CPU Core or Memery Size changed</h4>
+	
+    # Nginx
+      worker_processes = {NUMBER OF CORE}
+      worker_connections = {MEMORY SIZE}
+      
+    # MySQL
+      innodb_buffer_pool_size = {MEMORY SIZE} * 0.5
+      innodb_log_file_size = {innodb_buffer_pool_size} * 0.15
+      
+    # Celery
+      CELERYD_CONCURRENCY = {NUMBER OF CORE}
+
+<h2>ELB instance</h2>
+
+1. Create Load Balancer
+  - Set "/health_check" as 'Ping Path' value at Health Check Configuration
+2. Change nginx configuration
+
+    server {
+      ...
+      location /health_check {
+        access_log off;
+        return 200;
+      }
+      ...
+    }
+
+<h2>RDS instance</h2>
+
+1. Create RDS
+2. Connect RDS with django application server
+
+<h2>Route 53</h2>
+
+1. Create hosted zone
+2. Create record set
+
+Type | Alias | Alias Target
+-----|-------|-------------
+A | Yes | {ELB A RECORD}
+
+<h2>Django examples</h2>
+
 <h4>Localization</h4>
   
     root $ vi {PROJECT PATH}/{PROJECT NAME}/settings/prod.py
@@ -324,72 +380,72 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
       msgstr "Hello"
     
     root $ django-admin.py compilemessages
-
-<h4>Pillow setting</h4>
-
-    root $ apt-get install imagemagick libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
     
-    # 32bit : i386-linux-gnu, 64bit : x86_64-linux-gnu
-    root $ ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib 
-    root $ ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib 
-    root $ ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib 
-	
-    # Only for ubuntu 14.04 LTS version 
-    root $ ln -s /usr/include/freetype2 /usr/include/freetype 
-    root $ pip install pillow
-    - Check available list
+<h4>Send mail</h4>
 
-<h4>Use Pillow in controller</h4>
+		root $ vi {PROJECT PATH}/{PROJECT NAME}/apps/utils/utilities.py
+		
+			from django.core.mail import EmailMultiAlternatives
+			from django.template import Context
+			from django.template.loader import get_template
+
+			def send_mail_with_template(subject, template_name, user_from, *user_to, **dict_var):
+			    """
+			    send_mail_with_template(
+			        "Title Here",
+			        "email/template_name.html",
+			        "user_from@domain.com",
+			        "user_to_1@domain.com", "user_to_2@domain.com", ...,
+			        var_1="foo", var_2="foo", ...
+			    )
+			    """
+			    try:
+			        plaintext = get_template('email/email.txt')
+			        htmly = get_template(template_name)
+			     
+			        d = Context(dict_var)
+			     
+			        text_content = plaintext.render(d)
+			        html_content = htmly.render(d)
+			     
+			        msg = EmailMultiAlternatives(
+			            subject,
+			            text_content,
+			            user_from,
+			            user_to
+			        )
+			        msg.attach_alternative(html_content, "text/html")
+			        msg.send()
+			     
+			    except:
+			        pass
+			
+			    return None\
+			    
+		root $ vi {PROJECT PATH}/{PROJECT NAME}/settings/base.py
+		
+			EMAIL_HOST = 'smtp.gmail.com'
+			EMAIL_HOST_USER = '{GMAIL ACCOUNT}'
+			EMAIL_HOST_PASSWORD = '{PASSWORD}'
+			EMAIL_PORT = 587
+			EMAIL_USE_TLS = True
+	
+	<h4>Make thumbnail</h4>
 
     root $ vi {PROJECT PATH}/{PROJECT NAME}/apps/utils/utilities.py
     
+      from django.core.files.images import get_image_dimensions
       from PIL import Image as ImageObj
       from PIL import ImageOps
       import os
       import StringIO
       import urllib
-
-<h4>When CPU Core or Memery Size changed</h4>
-	
-    # Nginx
-      worker_processes = {NUMBER OF CORE}
-      worker_connections = {MEMORY SIZE}
       
-    # MySQL
-      innodb_buffer_pool_size = {MEMORY SIZE} * 0.5
-      innodb_log_file_size = {innodb_buffer_pool_size} * 0.15
-      
-    # Celery
-      CELERYD_CONCURRENCY = {NUMBER OF CORE}
-
-<h2>ELB instance</h2>
-
-1. Create Load Balancer
-  - Set "/health_check" as 'Ping Path' value at Health Check Configuration
-2. Change nginx configuration
-
-    server {
-      ...
-      location /health_check {
-        access_log off;
-        return 200;
-      }
-      ...
-    }
-
-<h2>RDS instance</h2>
-
-1. Create RDS
-2. Connect RDS with django application server
-
-<h2>Route 53</h2>
-
-1. Create hosted zone
-2. Create record set
-
-Type | Alias | Alias Target
------|-------|-------------
-A | Yes | {ELB A RECORD}
-
-<h2>Django examples</h2>
-
+      def make_thumbnail(image_path, thumbnail_path):
+      	fp = urllib.urlopen(image_path)
+      	original_image = ImageObj.open(StringIO.StringIO(fp.read()))
+      	size = (100, 70)
+      	thumbnail = ImageOps.fit(original_image, size, ImageObj.ANTIALIAS)
+      	thumbnail.save(thumbnail_path)
+      	
+      	return thumbnail_path
