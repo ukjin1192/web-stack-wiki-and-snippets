@@ -135,7 +135,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 <h4>Start Nginx and uWSGI</h4>
 
     root $ service nginx restart
-    root $ uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term
+    root $ uwsgi --uid www-data --gid www-data --emperror /etc/uwsgi/vassals --master --die-on-term
 
 <h4>Install PostgreSQL (or MySQL below)</h4>
 
@@ -327,8 +327,9 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 1. Create hosted zone
 2. Create record set
 
-Type | Alias | Alias Target
------|-------|-------------
+Type | Alias | Alias Target or Value
+-----|-------|----------------------
+NS | No | {NAME SERVER LIST}
 A | Yes | {ELB A RECORD}
 
 <h2>Django examples</h2>
