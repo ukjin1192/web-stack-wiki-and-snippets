@@ -164,7 +164,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 <h4>Install MySQL (or PostgreSQL above)</h4>
 
-    root $ apt-get install mysql-server libmysqlclient-dev [enter root password]
+    root $ apt-get install mysql-server libmysqlclient-dev mysql-client-core-5.5 [enter root password]
     root $ pip install MySQL-python
     root $ vi /etc/mysql/my.cnf
     - Add configuration from {PROJECT PATH}/conf/mysql/my.cnf
