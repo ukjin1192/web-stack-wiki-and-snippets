@@ -108,7 +108,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 <h4>Install Nginx (Upper than version 1.6 required)</h4>
 
-    root $ add-apt-repository ppa:nginx/stable [Enter]
+    root $ add-apt-repository ppa:nginx/stable [enter]
     root $ apt-get update
     root $ apt-get install nginx
     - Check on browser URL {PUBLIC IP}:80
@@ -161,6 +161,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
       }
       
     root $ ./manage.py migrate
+    root $ ./manage.py makemigrations {UNMIGRATED APPS}
 
 <h4>Install MySQL (or PostgreSQL above)</h4>
 
@@ -320,7 +321,39 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 <h2>RDS instance</h2>
 
 1. Create RDS
+2. Set security group as following
 2. Connect RDS with django application server
+
+Type | Protocol | Port | Source
+-----|----------|------|-------
+SSH | TCP | 22 | 0.0.0.0/0 (or Your IP)
+HTTP | TCP | 80 | 0.0.0.0/0
+HTTPS | TCP | 443 | 0.0.0.0/0
+MySQL | TCP | 8000 | 172.31.0.0/16
+
+		root $ mysql -u root -p -h {RDS END POINT} [enter password]
+		
+		- When user want to add another Databases
+		mysql $ CREATE DATABASE {DB NAME} DEFAULT CHARACTER SET utf8;
+		mysql $ exit;
+		
+		root $ vi {PROJECT PATH}/{PROJECT NAME}/settings/prod.py
+		
+			DATABASES = {
+		    'default': {
+	        'ENGINE': 'django.db.backends.mysql',
+	        'NAME': '{DB NAME}',
+	        'USER': 'root',
+	        'PASSWORD': '{PASSWORD}',
+	        'HOST': '{RDS END POINT}',
+	        'PORT': '3306',
+	        'DEFAULT-CHARACTER-SET': 'utf8',
+		    }
+			}
+			
+		root $ cd {PROJECT PATH}
+		root $ ./manage.py migrate
+		root $ ./manage.py makemigrations {UNMIGRATED APPS}
 
 <h2>Route 53</h2>
 
