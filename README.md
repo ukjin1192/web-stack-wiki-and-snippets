@@ -377,6 +377,7 @@ Type | Alias | Alias Target or Value
 -----|-------|----------------------
 NS | No | {NAME SERVER LIST}
 A | Yes | {ELB A RECORD}
+MX | No | {MAIL SERVER}
 
 <h2>Django examples</h2>
 
