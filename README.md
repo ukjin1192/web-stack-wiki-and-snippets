@@ -247,6 +247,9 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
       import djcelery
       
       djcelery.setup_loader()
+    
+    root $ cd {PROJECT PATH}/
+    root $ ./manage.py migrate
 
 <h4>Use Celery in controller</h4>
 
