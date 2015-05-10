@@ -258,14 +258,24 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
       from celery import task
       
       @task()
-      def sample_async_task(*args):
+      def sample_async_task(*args, **kwargs):
         return None
       
     root $ vi {PROJECT PATH}/{PROJECT NAME}/apps/{APP NAME}/views.py
       
       from utils.tasks import sample_async_task
         
-      sample_async_task.apply_async(args=["foo"], countdown=1)
+      sample_async_task.apply_async(
+      	args=[
+      		"foo_1", 
+      		"foo_2",
+      	], 
+      	kwargs={
+      		"foo_3": "bar",
+      		"foo_4": "bar",
+      	},
+      	countdown=1
+      )
 
 <h4>Celery command</h4>
 
