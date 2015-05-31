@@ -162,9 +162,6 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
           'PORT': '5432',
         }
       }
-      
-    root $ ./manage.py migrate
-    root $ ./manage.py makemigrations {UNMIGRATED APPS}
 
 <h4>Install MySQL (or PostgreSQL above)</h4>
 
