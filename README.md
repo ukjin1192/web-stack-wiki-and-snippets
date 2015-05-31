@@ -132,6 +132,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     root $ ln -s {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini /etc/uwsgi/vassals/
     root $ mkdir -p {PROJECT PATH}/logs/
     root $ cd {PROJECT PATH}/logs/
+    root $ touch uwsgi.log uwsgi.pid
     root $ chown www-data.www-data uwsgi.log uwsgi.pid
 
 <h4>Start Nginx and uWSGI</h4>
