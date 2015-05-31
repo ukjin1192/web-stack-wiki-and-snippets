@@ -130,6 +130,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     root $ ln -s {PROJECT PATH}/conf/uwsgi/uwsgi.conf /etc/init/
     root $ mkdir -p /etc/uwsgi/vassals/
     root $ ln -s {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini /etc/uwsgi/vassals/
+    root $ mkdir -p {PROJECT PATH}/logs/
     root $ cd {PROJECT PATH}/logs/
     root $ chown www-data.www-data uwsgi.log uwsgi.pid
 
