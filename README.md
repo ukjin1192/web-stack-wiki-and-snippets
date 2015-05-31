@@ -67,7 +67,8 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 <h4>Clone sample django project if exist</h4>
 
     root $ ssh-keygen
-    - Add public key(id_rsa.pub) to Github or Bitbucket
+    root $ cat ~/.ssh/id_rsa.pub
+    - Add public key to Github or Bitbucket
     
     root $ mkdir -p /var/www/
     root $ cd /var/www/
