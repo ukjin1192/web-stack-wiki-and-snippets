@@ -312,7 +312,6 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 	
     # Nginx
       worker_processes = {NUMBER OF CORE}
-      worker_connections = {MEMORY SIZE}
       
     # MySQL
       innodb_buffer_pool_size = {MEMORY SIZE} * 0.5
