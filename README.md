@@ -241,6 +241,10 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
       BROKER_URL = 'amqp://guest:guest@localhost:5672/'
       CELERYD_PREFETCH_MULTIPLIER = {More time-consuming tasks, More closer to number 1}
       CELERYD_CONCURRENCY = {Default : Number of CPU cores}
+      
+      # Execute periodic tasks by DB scheduler to enroll tasks at Admin
+      CELERY_IMPORTS = ('utils.cron',)
+      CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
     
     root $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py	
     
@@ -250,6 +254,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     
     root $ cd {PROJECT PATH}/
     root $ ./manage.py migrate
+    root $ touch logs/celery_daemon.log logs/celery_beat.log
 
 <h4>Use Celery in controller</h4>
 
