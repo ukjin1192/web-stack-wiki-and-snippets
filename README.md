@@ -387,6 +387,7 @@ MX | No | {MAIL SERVER}
 
 <h4>Localization</h4>
   
+    root $ apt-get install gettext
     root $ vi {PROJECT PATH}/{PROJECT NAME}/settings/prod.py
     
       ...
