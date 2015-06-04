@@ -293,6 +293,18 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     - Enroll tasks at Admin > Djcelery > Periodic tasks
     root $ ./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach   # Start celery beat (cron task)
     root $ ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery beat
+    
+<h4>New Relic (APM) setting</h4>
+
+	# Check license key from newrelic.com
+    root $ pip install newrelic
+    root $ newrelic-admin generate-config {LICENSE KEY} newrelic.ini
+    root $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
+    
+    	# Add following code at the end
+		import newrelic.agent
+		newrelic.agent.initialize(ROOT_DIR + '/conf/newrelic/newrelic.ini')
+		application = newrelic.agent.wsgi_application()(application)
 
 <h4>Pillow setting</h4>
 
