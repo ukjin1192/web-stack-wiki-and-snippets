@@ -305,6 +305,9 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 		import newrelic.agent
 		newrelic.agent.initialize(ROOT_DIR + '/conf/newrelic/newrelic.ini')
 		application = newrelic.agent.wsgi_application()(application)
+		
+	root $ fab stop_uwsgi
+	root $ fab run_uwsgi
 
 <h4>Pillow setting</h4>
 
