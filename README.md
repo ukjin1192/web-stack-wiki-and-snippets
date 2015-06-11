@@ -141,12 +141,11 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 <h4>Nginx and uWSGI setting</h4>
 
     - Edit following files to customize
-      {PROJECT PATH}/conf/nginx/{PROJECT NAME}.conf
+      {PROJECT PATH}/conf/nginx/nginx.conf
       {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini
     
     root $ rm /etc/nginx/nginx.conf
     root $ ln -s {PROJECT PATH}/conf/nginx/nginx.conf /etc/nginx/
-    root $ ln -s {PROJECT PATH}/conf/nginx/{PROJECT NAME}.conf /etc/nginx/sites-enabled/
     root $ ln -s {PROJECT PATH}/conf/uwsgi/uwsgi.conf /etc/init/
     root $ mkdir -p /etc/uwsgi/vassals/
     root $ ln -s {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini /etc/uwsgi/vassals/
