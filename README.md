@@ -63,6 +63,26 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     root $ vim [:PluginInstall]
     root $ cd ~/.vim/bundle/YouCompleteMe
     root $ ./install.sh
+    
+<h4>Install Fail2ban</h4>
+
+    root $ apt-get install fail2ban
+    root $ cd /etc/fail2ban
+    root $ cp jail.conf jail.local
+    root $ vi jail.local
+    
+      [DEFAULT]
+			ignoreip = {SAFE IP}
+			
+			[ssh]
+			enabled = true
+			
+			[ssh-ddos]
+			enabled = true
+			
+			destemail = {EMAIL ADDRESS}
+		
+		root $ service fail2ban restart
 
 <h4>Clone sample django project if exist</h4>
 
