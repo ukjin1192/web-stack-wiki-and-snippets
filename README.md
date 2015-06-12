@@ -425,14 +425,14 @@ MX | No | {MAIL SERVER}
     root $ vi {PROJECT PATH}/{PROJECT NAME}/settings/prod.py
     
       ...
-      LANGUAGE_CODE = 'ko-kr'
+      LANGUAGE_CODE = 'ko'
       ugettext = lambda s: s
       LANGUAGES = (
         ('ko', ugettext('Korean')),
         ('en', ugettext('English')),
       )
       LOCALE_PATHS = (
-        ABS_PATH('locale'),     # /var/www/mysite.com/locale
+        ROOT_DIR + '/locale/',     # /var/www/mysite.com/locale
       )
       USE_I18N = True
       USE_L10N = True
@@ -449,22 +449,22 @@ MX | No | {MAIL SERVER}
     
       {% load i18n %}
       ...
-      {% trans "안녕" %}
+      {% trans "Hello" %}
       ...
     
     root $ sudo apt-get install gettext
     root $ mkdir {PROJECT PATH}/locale
     
     # Case of Template translation
-    root $ django-admin.py makemessages -l {LOCALE NAME}
+    root $ django-admin.py makemessages -l {LOCALE NAME} (='ko')
     
     # Case of Javascript translation
     root $ django-admin.py makemessages -d djangojs -l {LOCALE NAME}
     
     root $ vi {PROJECT PATH}/locale/{LOCALE NAME}/LC_MESSAGES/django.po
     
-      msgid "안녕"
-      msgstr "Hello"
+      msgid "Hello"
+      msgstr "안녕"
     
     root $ django-admin.py compilemessages
     
