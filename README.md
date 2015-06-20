@@ -372,15 +372,8 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 <h2>RDS instance</h2>
 
 1. Create RDS
-2. Set security group as following
+2. Create new security group automatically
 2. Connect RDS with django application server
-
-Type | Protocol | Port | Source
------|----------|------|-------
-SSH | TCP | 22 | 0.0.0.0/0 (or Your IP)
-HTTP | TCP | 80 | 0.0.0.0/0
-HTTPS | TCP | 443 | 0.0.0.0/0
-MySQL | TCP | 3306 | 172.31.0.0/16
 
 		root $ mysql -u root -p -h {RDS END POINT} [enter password]
 		
