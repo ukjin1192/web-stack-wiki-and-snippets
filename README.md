@@ -243,6 +243,13 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
     root $ redis-cli flushall	  # Flush redis memory DB
     root $ redis-cli shutdown	  # Shutdown redis
 
+<h4>Use redisboard at admin site</h4>
+
+    - Go to admin site
+    - Redisboard > Redis Servers > Add Redis Server
+      Label : localhost / Hostname : 127.0.0.1
+    - See cache list at Tools > Inspect
+
 <h4>Install Celery</h4>
 
     root $ apt-get install rabbitmq-server
