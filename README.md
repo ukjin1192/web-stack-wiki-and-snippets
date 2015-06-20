@@ -380,7 +380,7 @@ Type | Protocol | Port | Source
 SSH | TCP | 22 | 0.0.0.0/0 (or Your IP)
 HTTP | TCP | 80 | 0.0.0.0/0
 HTTPS | TCP | 443 | 0.0.0.0/0
-MySQL | TCP | 8000 | 172.31.0.0/16
+MySQL | TCP | 3306 | 172.31.0.0/16
 
 		root $ mysql -u root -p -h {RDS END POINT} [enter password]
 		
