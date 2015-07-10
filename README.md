@@ -103,7 +103,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 <h4>Install django and helpful packages</h4>
 
-    root $ pip install fabric django==1.7.7 django-debug-toolbar django-suit django-compressor httplib2
+    root $ pip install fabric django==1.7.9 django-debug-toolbar django-suit django-compressor httplib2
     root $ cd {PROJECT PATH} (=/var/www/{DOMAIN NAME})
     root $ ./manage.py migrate
     root $ ./manage.py collectstatic --noinput
