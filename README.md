@@ -145,8 +145,9 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
       {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini
     
     root $ rm /etc/nginx/nginx.conf
-    root $ ln -s {PROJECT PATH}/conf/nginx/nginx.conf /etc/nginx/
-    root $ ln -s {PROJECT PATH}/conf/uwsgi/uwsgi.conf /etc/init/
+    root $ rm /etc/nginx/sites-enabled/default
+    root $ ln -s {PROJECT PATH}/conf/nginx/nginx.conf /etc/nginx/nginx.conf
+    root $ ln -s {PROJECT PATH}/conf/uwsgi/uwsgi.conf /etc/init/uwsgi.conf
     root $ mkdir -p /etc/uwsgi/vassals/
     root $ ln -s {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini /etc/uwsgi/vassals/
     root $ mkdir -p {PROJECT PATH}/logs/
