@@ -408,7 +408,8 @@ MySQL | TCP | 3306 | 0.0.0.0/0
 			
 		root $ cd {PROJECT PATH}
 		root $ ./manage.py migrate
-		root $ ./manage.py makemigrations {UNMIGRATED APPS}
+		root $ ./manage.py makemigrations {APP NAME}
+		root $ ./manage.py migrate {APP NAME}
 
 <h2>Route 53</h2>
 
