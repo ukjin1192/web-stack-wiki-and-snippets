@@ -454,19 +454,19 @@ HTTPS | 443 | HTTP | 80 | Use default | Add
 
 6. Edit nginx configuration to redirect HTTP to HTTPS
 
-	server {
-        listen 80;
-        ...
-        
-		location / {
-            
-            # Redirect HTTP to HTTPS
-            if ($http_x_forwarded_proto != 'https') {
-                return 301 https://$host$request_uri;
-            }
-            ...
-        }
-	}
+		server {
+	        listen 80;
+	        ...
+	        
+			location / {
+	            
+	            # Redirect HTTP to HTTPS
+	            if ($http_x_forwarded_proto != 'https') {
+	                return 301 https://$host$request_uri;
+	            }
+	            ...
+	        }
+		}
 
 <h2>Django examples</h2>
 
