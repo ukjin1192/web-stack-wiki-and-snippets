@@ -441,7 +441,7 @@ MX | No | {MAIL SERVER}
 		$ cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > example_com_bundle.crt
 
 5. Go to AWS > EC2 > Elastic Load balancer > Listener and add following row
-	
+
 Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port | Cipher | SSL Certificate
 -----|-----------------|--------------------|-------------------|---------------|--------|----------------
 HTTPS | 443 | HTTP | 80 | Use default | Add
@@ -451,6 +451,22 @@ HTTPS | 443 | HTTP | 80 | Use default | Add
 		Public key : example_com_bundle.crt
 		Certificate chain : None
 	- Save changes
+
+6. Edit nginx configuration to redirect HTTP to HTTPS
+
+	server {
+        listen 80;
+        ...
+        
+		location / {
+            
+            # Redirect HTTP to HTTPS
+            if ($http_x_forwarded_proto != 'https') {
+                return 301 https://$host$request_uri;
+            }
+            ...
+        }
+	}
 
 <h2>Django examples</h2>
 
