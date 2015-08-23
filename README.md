@@ -422,6 +422,36 @@ NS | No | {NAME SERVER LIST}
 A | Yes | {ELB A RECORD}
 MX | No | {MAIL SERVER}
 
+<h2>Adapt SSL certificate</h2>
+
+1. Create private key
+
+		$ openssl req -new -newkey rsa:2048 -nodes -keyout example_com.key -out example_com.csr
+
+2. Purchase Comodo positive SSL certificate and put example_com.key to activate SSL
+3. Get email from Comodo which contains 4 files as following
+
+		Root CA Certificate - AddTrustExternalCARoot.crt
+		Intermediate CA Certificate - COMODORSAAddTrustCA.crt
+		Intermediate CA Certificate - COMODORSADomainValidationSecureServerCA.crt
+		PositiveSSL Certificate - example_com.crt
+
+4. Combine above 4 files as following (Be careful of the order)
+
+		$ cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > example_com_bundle.crt
+
+5. Go to AWS > EC2 > Elastic Load balancer > Listener and add following row
+	
+Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port | Cipher | SSL Certificate
+-----|-----------------|--------------------|-------------------|---------------|--------|----------------
+HTTPS | 443 | HTTP | 80 | Use default | Add
+
+	- Add certificate
+		Private key : example_com.key
+		Public key : example_com_bundle.crt
+		Certificate chain : None
+	- Save changes
+
 <h2>Django examples</h2>
 
 <h4>Localization</h4>
