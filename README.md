@@ -3,10 +3,11 @@
 django snippets and setting tutorial
 
 - Based on Amazon Web Service
+	- Route 53 (DNS)
+	- ELB (Load balancing)
   - EC2 (OS: ubuntu 14.04 LTS)
-  - ELB (Load balancing)
   - RDS (DB: MySQL or PostgreSQL)
-  - Route 53 (Domain)
+  - ElasticCache (Redis)
 
 - Stack
   - Nginx 1.6
@@ -467,6 +468,23 @@ HTTPS | 443 | HTTP | 80 | Use default | Add
 	            ...
 	        }
 		}
+
+<h2>Elastic Cache</h2>
+
+1. Choose Engine (Redis)
+2. Cancel checkbox 'Enable Replication' and choose cache.t2.micro if it is development purpose
+3. Change cache configuration in settings.py as following
+
+			CACHES = {
+				'default': {
+			  	'BACKEND': 'django_redis.cache.RedisCache',
+			    'LOCATION': '{ENDPOINT}:{PORT/{NODE NUMBER}',
+			    'OPTIONS': {
+			    	'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+			    }
+				}
+			}
+
 
 <h2>Django examples</h2>
 
