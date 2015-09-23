@@ -478,13 +478,18 @@ HTTPS | 443 | HTTP | 80 | Use default | Add
 			CACHES = {
 				'default': {
 			  	'BACKEND': 'django_redis.cache.RedisCache',
-			    'LOCATION': '{ENDPOINT}:{PORT/{NODE NUMBER}',
+			    'LOCATION': 'redis://{END POINT}:6379',
 			    'OPTIONS': {
 			    	'CLIENT_CLASS': 'django_redis.client.DefaultClient',
 			    }
 				}
 			}
 
+4. Add following inbound rule for EC2
+
+Type | Protocol | Port | Source
+-----|----------|------|-------
+Custom TCP Rule | TCP | 6379 | 0.0.0.0/0 (for redis)
 
 <h2>Django examples</h2>
 
