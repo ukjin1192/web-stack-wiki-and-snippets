@@ -24,13 +24,12 @@ django snippets and setting tutorial
 - Django examples
   - Localization
   - Send mail
-  - Make thumbnail
 
 <h2>EC2 Instance</h2>
 
-1. Create EC2 instance
-2. Set security group as following (Inbound value)
-3. Connect to terminal with PEM file
+- Create EC2 instance
+- Set security group as following (Inbound value)
+- Connect to terminal with PEM file
 
 Type | Protocol | Port | Source
 -----|----------|------|-------
@@ -364,9 +363,9 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 <h2>ELB instance</h2>
 
-1. Create Load Balancer
+- Create Load Balancer
   - Set "/health_check" as 'Ping Path' value at Health Check Configuration
-2. Change nginx configuration
+- Change nginx configuration
 
     server {
       ...
@@ -379,13 +378,14 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 <h2>RDS instance</h2>
 
-1. Create RDS
-2. Create security group and set inbound rules as following
-3. Connect RDS with django application server
+- Create RDS
+- Create security group and set inbound rules as following
 
 Type | Protocol | Port | Source
 -----|----------|------|-------
 MySQL | TCP | 3306 | 0.0.0.0/0
+
+- Connect RDS with django application server
 
 		root $ mysql -u root -p -h {RDS END POINT} [enter password]
 		
@@ -414,8 +414,8 @@ MySQL | TCP | 3306 | 0.0.0.0/0
 
 <h2>Route 53</h2>
 
-1. Create hosted zone
-2. Create record set
+- Create hosted zone
+- Create record set
 
 Type | Alias | Alias Target or Value
 -----|-------|----------------------
@@ -425,23 +425,23 @@ MX | No | {MAIL SERVER}
 
 <h2>Adapt SSL certificate</h2>
 
-1. Create private key
+- Create private key
 
 		$ openssl req -new -newkey rsa:2048 -nodes -keyout example_com.key -out example_com.csr
 
-2. Purchase Comodo positive SSL certificate and put example_com.key to activate SSL
-3. Get email from Comodo which contains 4 files as following
+- Purchase Comodo positive SSL certificate and put example_com.key to activate SSL
+- Get email from Comodo which contains 4 files as following
 
 		Root CA Certificate - AddTrustExternalCARoot.crt
 		Intermediate CA Certificate - COMODORSAAddTrustCA.crt
 		Intermediate CA Certificate - COMODORSADomainValidationSecureServerCA.crt
 		PositiveSSL Certificate - example_com.crt
 
-4. Combine above 4 files as following (Be careful of the order)
+- Combine above 4 files as following (Be careful of the order)
 
 		$ cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > example_com_bundle.crt
 
-5. Go to AWS > EC2 > Elastic Load balancer > Listener and add following row
+- Go to AWS > EC2 > Elastic Load balancer > Listener and add following row
 
 Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port | Cipher | SSL Certificate
 -----|-----------------|--------------------|-------------------|---------------|--------|----------------
@@ -453,7 +453,7 @@ HTTPS | 443 | HTTP | 80 | Use default | Add
 		Certificate chain : None
 	- Save changes
 
-6. Edit nginx configuration to redirect HTTP to HTTPS
+- Edit nginx configuration to redirect HTTP to HTTPS
 
 		server {
 	        listen 80;
@@ -471,25 +471,26 @@ HTTPS | 443 | HTTP | 80 | Use default | Add
 
 <h2>Elastic Cache</h2>
 
-1. Choose Engine (Redis)
-2. Cancel checkbox 'Enable Replication' and choose cache.t2.micro if it is development purpose
-3. Change cache configuration in settings.py as following
-
-			CACHES = {
-				'default': {
-			  	'BACKEND': 'django_redis.cache.RedisCache',
-			    'LOCATION': 'redis://{END POINT}:6379',
-			    'OPTIONS': {
-			    	'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-			    }
-				}
-			}
-
-4. Add following inbound rule for EC2
+- Choose Engine (Redis)
+- Cancel checkbox 'Enable Replication' and choose cache.t2.micro if it is development purpose
+- Choose security group. Security group should contain following inbound rule.
 
 Type | Protocol | Port | Source
 -----|----------|------|-------
-Custom TCP Rule | TCP | 6379 | 0.0.0.0/0 (for redis)
+Custom TCP Rule | TCP | 6379 | 0.0.0.0/0
+
+- Change cache configuration in settings.py as following
+
+			CACHES = {
+				'default': {
+				  	'BACKEND': 'django_redis.cache.RedisCache',
+				    'LOCATION': 'redis://{END POINT}:6379',
+				    'OPTIONS': {
+				    	'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+				    }
+				}
+			}
+
 
 <h2>Django examples</h2>
 
@@ -590,23 +591,3 @@ Custom TCP Rule | TCP | 6379 | 0.0.0.0/0 (for redis)
 			EMAIL_HOST_PASSWORD = '{PASSWORD}'
 			EMAIL_PORT = 587
 			EMAIL_USE_TLS = True
-	
-	<h4>Make thumbnail</h4>
-
-    root $ vi {PROJECT PATH}/{PROJECT NAME}/apps/utils/utilities.py
-    
-      from django.core.files.images import get_image_dimensions
-      from PIL import Image as ImageObj
-      from PIL import ImageOps
-      import os
-      import StringIO
-      import urllib
-      
-      def make_thumbnail(image_path, thumbnail_path):
-      	fp = urllib.urlopen(image_path)
-      	original_image = ImageObj.open(StringIO.StringIO(fp.read()))
-      	size = (100, 70)
-      	thumbnail = ImageOps.fit(original_image, size, ImageObj.ANTIALIAS)
-      	thumbnail.save(thumbnail_path)
-      	
-      	return thumbnail_path
