@@ -47,7 +47,7 @@ server {
 ~~~~
 
 
-### Adapt SSL certificate at ELB
+#### Adapt SSL certificate at ELB
 
 - Create private key
 
@@ -72,7 +72,7 @@ $ cat mysite_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTr
 - Click `Edit` and add following listener
 
 Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port | Cipher | SSL Certificate
------|-----------------|--------------------|-------------------|---------------|--------|----------------
+-----------------------|--------------------|-------------------|---------------|--------|----------------
 HTTPS | 443 | HTTP | 80 | Use default | Add
 
 - Click `Change` on `SSL Certificate` column and add certificate
@@ -175,11 +175,11 @@ Custom TCP Rule | TCP | 6379 | 0.0.0.0/0
 ~~~~
 CACHES = {
 	'default': {
-  	'BACKEND': 'django_redis.cache.RedisCache',
-    'LOCATION': 'redis://{END POINT}:6379',
-    'OPTIONS': {
-    	'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-    }
+		'BACKEND': 'django_redis.cache.RedisCache',
+		'LOCATION': 'redis://{END POINT}:6379',
+		'OPTIONS': {
+			'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+		}
 	}
 }
 ~~~~
