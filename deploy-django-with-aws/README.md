@@ -1,14 +1,14 @@
 # Deploy django with amazon web service
 
-- EC2 (OS: ubuntu 14.04 LTS)
-- ELB (Load balancing)
+- EC2 *(OS: ubuntu 14.04 LTS)*
+- ELB *(Load balancing)*
 	- Adapt SSL certificate at ELB
-- Route 53 (DNS)
-- RDS (MySQL)
-- ElastiCache (Redis)
+- Route 53 *(DNS)*
+- RDS *(MySQL)*
+- ElastiCache *(Redis)*
 
 
-## EC2 (OS: ubuntu 14.04 LTS)
+## EC2 *(OS: ubuntu 14.04 LTS)*
 
 - `EC2 menu` > `Launch Instance` > `Ubuntu Server 14.04 LTS`
 - Click `Next` until `6. Configure Security Group`
@@ -26,7 +26,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 - From now on, you can make SSH connect to instance with PEM file
 
 
-## ELB (Load balancing)
+## ELB *(Load balancing)*
 
 - EC2 menu > Load Balancers > Create Load Balancer
 - Put `Load Balancer name`
@@ -57,11 +57,11 @@ $ openssl req -new -newkey rsa:2048 -nodes -keyout mysite_com.key -out mysite_co
 
 - Purchase Comodo positive SSL certificate and put mysite_com.key to activate SSL
 - Check email from Comodo which contains below files
-	- Root CA Certificate - AddTrustExternalCARoot.crt
-	- Intermediate CA Certificate - COMODORSAAddTrustCA.crt
-	- Intermediate CA Certificate - COMODORSADomainValidationSecureServerCA.crt
-	- PositiveSSL Certificate - mysite_com.crt
-- Merge above files into one (Be careful of the order)
+	- Root CA Certificate - `AddTrustExternalCARoot.crt`
+	- Intermediate CA Certificate - `COMODORSAAddTrustCA.crt`
+	- Intermediate CA Certificate - `COMODORSADomainValidationSecureServerCA.crt`
+	- PositiveSSL Certificate - `mysite_com.crt`
+- Merge above files into one *(Be careful of the order)*
 
 ~~~~
 $ cat mysite_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > mysite_com_bundle.crt
@@ -69,17 +69,17 @@ $ cat mysite_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTr
 
 - `EC2 menu` > `Load Balancers`
 - Select load balancer and click `Listeners` tab
-- Click `Edit` and add following listener
+- Click `Edit` and add listener as following
 
 Load Balancer Protocol | Load Balancer Port | Instance Protocol | Instance Port | Cipher | SSL Certificate
 -----------------------|--------------------|-------------------|---------------|--------|----------------
 HTTPS | 443 | HTTP | 80 | Use default | Add
 
 - Click `Change` on `SSL Certificate` column and add certificate
-	- Private key : mysite_com.key
-	- Public key : mysite_com_bundle.crt
-	- Certificate chain : None
-- Edit `nginx.conf` to redirect HTTP to HTTPS
+	- Private key : `mysite_com.key`
+	- Public key : `mysite_com_bundle.crt`
+	- Certificate chain : `None`
+- Edit `nginx.conf` to redirect `HTTP` to `HTTPS`
 
 ~~~~
 server {
@@ -95,7 +95,7 @@ server {
 ~~~~
 
 
-## Route 53 (DNS)
+## Route 53 *(DNS)*
 
 - If you don't have domain yet, get domain from `Route 53 menu` > `Domain Registration`
 - `Route 53 menu` > `DNS Management` > `Create Hosted Zone`
@@ -110,14 +110,14 @@ A | Yes | {ELB A RECORD}
 MX | No | {MAIL SERVER}
 
 
-## RDS (MySQL)
+## RDS *(MySQL)*
 
 - `RDS menu` > `Launch a DB Instance` > `MySQL`
 - Click `No` for `Multi-AZ deployment` option to use free-tier
 - Select `db.t2.micro` for `DB Instance Class` and `No` for `Multi-AZ Deployment`
 - Put `DB Instance Identifier`, `Master Username`, `Master Password`
 - `Launch DB Instance`
-- Create new security group with following inbound rule
+- Create new security group as following inbound rule
 
 Type | Protocol | Port | Source
 -----|----------|------|-------
@@ -159,12 +159,12 @@ $ ./manage.py migrate {APPLICATION NAME}
 ~~~~
 
 
-## ElastiCache (Redis)
+## ElastiCache *(Redis)*
 
 - `ElastiCache menu` > `Launch Cache Cluster` > `Redis`
 - Uncheck `Enable Replication` option to use free-tier
 - Put `Cluster Name` and select `cache.t2.micro` for `Node Type`
-- Create new security group with following inbound rule
+- Create new security group as following inbound rule
 
 Type | Protocol | Port | Source
 -----|----------|------|-------
