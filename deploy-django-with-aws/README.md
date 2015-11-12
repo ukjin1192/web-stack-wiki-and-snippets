@@ -1,4 +1,4 @@
-# Deploy django application with amazon web service
+# Deploy django with amazon web service
 
 - EC2 (OS: ubuntu 14.04 LTS)
 - ELB (Load balancing)
