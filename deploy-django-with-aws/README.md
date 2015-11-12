@@ -22,7 +22,7 @@ HTTPS | TCP | 443 | 0.0.0.0/0 (for nginx)
 Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 - Review and Launch > Launch
-- Create PEM file and save it into local directory
+- Create PEM file and save it into local directory (DO NOT share or delete PEM file)
 - From now on, you can make SSH connect to instance with PEM file
 
 
