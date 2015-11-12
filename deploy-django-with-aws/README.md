@@ -8,7 +8,7 @@
 - ElastiCache *(Redis)*
 
 
-## EC2 *(OS: ubuntu 14.04 LTS)*
+## EC2
 
 - `EC2 menu` > `Launch Instance` > `Ubuntu Server 14.04 LTS`
 - Click `Next` until `6. Configure Security Group`
@@ -22,11 +22,11 @@ HTTPS | TCP | 443 | 0.0.0.0/0 (for nginx)
 Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 - `Review and Launch` > `Launch`
-- Create PEM file and save it into local directory (DO NOT share or delete PEM file)
+- Create PEM file and save it into local directory *(DO NOT share or delete PEM file)*
 - From now on, you can make SSH connect to instance with PEM file
 
 
-## ELB *(Load balancing)*
+## ELB
 
 - EC2 menu > Load Balancers > Create Load Balancer
 - Put `Load Balancer name`
@@ -95,7 +95,7 @@ server {
 ~~~~
 
 
-## Route 53 *(DNS)*
+## Route 53
 
 - If you don't have domain yet, get domain from `Route 53 menu` > `Domain Registration`
 - `Route 53 menu` > `DNS Management` > `Create Hosted Zone`
@@ -110,7 +110,7 @@ A | Yes | {ELB A RECORD}
 MX | No | {MAIL SERVER}
 
 
-## RDS *(MySQL)*
+## RDS
 
 - `RDS menu` > `Launch a DB Instance` > `MySQL`
 - Click `No` for `Multi-AZ deployment` option to use free-tier
@@ -159,7 +159,7 @@ $ ./manage.py migrate {APPLICATION NAME}
 ~~~~
 
 
-## ElastiCache *(Redis)*
+## ElastiCache
 
 - `ElastiCache menu` > `Launch Cache Cluster` > `Redis`
 - Uncheck `Enable Replication` option to use free-tier
