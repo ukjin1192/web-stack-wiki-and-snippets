@@ -23,7 +23,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 - Review and Launch > Launch
 - Create PEM file and save it into local directory
-- Connect to terminal with PEM file
+- From now on, you can make SSH connect to instance with PEM file
 
 
 ## ELB (Load balancing)
