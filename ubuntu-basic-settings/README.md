@@ -7,11 +7,13 @@ $ apt-get update
 $ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev python-pip
 ~~~~
 
+
 #### Set timezone
 
 ~~~~
 $ dpkg-reconfigure tzdata [Select city]
 ~~~~
+
 
 #### Customize vim editor
 
@@ -28,6 +30,7 @@ $ vim [:PluginInstall]
 $ cd ~/.vim/bundle/YouCompleteMe
 $ ./install.sh
 ~~~~
+
 
 #### Install Fail2ban to protect from malicious attack
 
@@ -50,6 +53,7 @@ $ vi jail.local
 $ service fail2ban restart
 ~~~~
 
+
 #### Configure git setting
 
 ~~~~
@@ -57,6 +61,7 @@ $ git config --global user.name {USERNAME}
 $ git config --global user.email {EMAIL ADDRESS}
 $ git commit --amend --reset-author
 ~~~~
+
 
 #### Install nginx *(Recommend version upper than 1.6)*
 
@@ -68,11 +73,13 @@ $ apt-get install nginx
   Check {PUBLIC IP}:80 URL on browser
 ~~~~
 
+
 #### Install MySQL
 
 ~~~~
 $ apt-get install mysql-server libmysqlclient-dev mysql-client-core-5.5 [Enter root password]
 ~~~~
+
 
 #### Install PostgreSQL
 
