@@ -79,16 +79,3 @@ $ apt-get install mysql-server libmysqlclient-dev mysql-client-core-5.5 [Enter r
 ~~~~
 $ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib [Enter password]
 ~~~~
-
-#### Install redis
-
-~~~~
-$ apt-get install redis-server
-~~~~
-
-#### Install celery
-
-~~~~
-$ apt-get install rabbitmq-server
-$ pip install celery amqp
-~~~~
