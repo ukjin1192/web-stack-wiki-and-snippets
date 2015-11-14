@@ -9,7 +9,7 @@ $ ./manage.py migrate
 $ ./manage.py runserver 0.0.0.0:8000
 ~~~~
 
-- Check URL {PUBLIC IP}:8000 on browser
+- Check URL `{PUBLIC IP}:8000` on browser
 
 
 #### Clone sample django project if exist
@@ -161,7 +161,7 @@ $ ./manage.py collectstatic --noinput
 
 - Go to admin site
 - `Redisboard` > `Redis Servers` > `Add Redis Server`
-- Label : localhost / Hostname : 127.0.0.1
+- Label : `localhost` / Hostname : `127.0.0.1`
 - Check cache list at `Tools` > `Inspect`
 
 
