@@ -77,7 +77,7 @@ $ apt-get install mysql-server libmysqlclient-dev mysql-client-core-5.5 [Enter r
 #### Install PostgreSQL
 
 ~~~~
-$ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib
+$ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib [Enter password]
 ~~~~
 
 #### Install redis
