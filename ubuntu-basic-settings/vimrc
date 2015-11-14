@@ -1,0 +1,62 @@
+" Pre-requirements
+  " $ sudo apt-get install vim ctags cmake python-dev
+" Install Vundle
+  " $ mkdir -p ~/.vim/bundle/
+  " $ cd ~/.vim/bundle/
+  " $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" Install Plugins
+  " $ vim [:PluginInstall]
+" Complie YouCompleteMe
+  " $ cd ~/.vim/bundle/YouCompleteMe
+  " $ ./install.sh
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+  Plugin 'gmarik/Vundle.vim'                  " Manage Vundle Package
+  Plugin 'Valloric/YouCompleteMe'             " Auto complete
+  Plugin 'majutsushi/tagbar'                  " Check function and global variable at side bar
+  Plugin 'scrooloose/nerdtree'                " Show directory tree at side bar
+  Plugin 'scrooloose/syntastic'               " Chekc Syntax error when save (includes PEP)
+  Plugin 'scrooloose/nerdcommenter'           " Annotate Block (\cc) or delete block (\cu)
+  Plugin 'nathanaelkane/vim-indent-guides'    " Indent Guides
+call vundle#end()
+filetype plugin indent on
+
+" Indent Guides
+colorscheme default
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 2
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=4
+
+" Default settings
+set autoindent      " Auto indentation
+set smartindent     " Smart indentation
+set cindent         " Indentation for C language
+set tabstop=2       " Tab unit
+set shiftwidth=2    " Shift unit
+set hlsearch        " Highlight search keywords
+set background=dark " Backgroud color
+syntax enable       " Highlight syntax
+hi Comment ctermfg=DarkGrey
+
+" Status bar
+set laststatus=2    " Show status bar always
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F
+hi statusline ctermfg=0 ctermbg=6
+
+" Memorize cursor position
+au BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\ exe "norm g`\"" |
+\ endif
+
+" Vim Key Mapping
+nmap <F7> :set paste!<CR>
+nmap <F8> :set paste<CR>
+nmap <F9> :NERDTree<CR>
+nmap <F10> :TagbarToggle<CR>
+nmap <F11> :SyntasticToggleMode<CR>
+nmap <F12> :SyntasticCheck<CR>
