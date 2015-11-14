@@ -20,9 +20,11 @@ $ dpkg-reconfigure tzdata [Select city]
 ~~~~
 $ apt-get install vim ctags cmake
 $ vi ~/.vimrc
-  
-  Copy and paste vimrc
-  
+~~~~
+
+- Copy and paste vimrc
+
+~~~~
 $ mkdir -p ~/.vim/bundle
 $ cd ~/.vim/bundle
 $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -69,9 +71,9 @@ $ git commit --amend --reset-author
 $ add-apt-repository ppa:nginx/stable [Enter]
 $ apt-get update
 $ apt-get install nginx
-
-  Check {PUBLIC IP}:80 URL on browser
 ~~~~
+
+- Check {PUBLIC IP}:80 URL on browser
 
 
 #### Install MySQL
