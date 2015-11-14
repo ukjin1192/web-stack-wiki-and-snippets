@@ -73,7 +73,7 @@ $ apt-get update
 $ apt-get install nginx
 ~~~~
 
-- Check {PUBLIC IP}:80 URL on browser
+- Check URL `{PUBLIC IP}:80` on browser
 
 
 #### Install MySQL
