@@ -2,12 +2,14 @@
 
 #### Install django and helpful packages
 
+~~~~
 $ pip install django django-debug-toolbar fabric httplib2
 $ cd {PROJECT PATH}
 $ ./manage.py migrate
 $ ./manage.py runserver 0.0.0.0:8000
+~~~~
 
-  Check URL {PUBLIC IP}:8000 on browser
+- Check URL {PUBLIC IP}:8000 on browser
 
 
 #### Clone sample django project if exist
@@ -15,9 +17,11 @@ $ ./manage.py runserver 0.0.0.0:8000
 ~~~~
 $ ssh-keygen
 $ cat ~/.ssh/id_rsa.pub
+~~~~
 
-  Add public key to Github or Bitbucket
+- Add public key to Github or Bitbucket
 
+~~~~
 $ mkdir -p /var/www/
 $ cd /var/www/
 $ git clone {GIT REMOTE ORIGIN URL}
@@ -157,11 +161,8 @@ $ ./manage.py collectstatic --noinput
 
 - Go to admin site
 - `Redisboard` > `Redis Servers` > `Add Redis Server`
-
-  Label : localhost / Hostname : 127.0.0.1
-  
-- See cache list at `Tools` > `Inspect`
-~~~~
+- Label : localhost / Hostname : 127.0.0.1
+- Check cache list at `Tools` > `Inspect`
 
 
 #### Redis command
@@ -294,9 +295,9 @@ $ ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
 $ ln -s /usr/include/freetype2 /usr/include/freetype 
 
 $ pip install pillow
-
-  Check available list 
 ~~~~
+
+- Check available list 
 
 
 #### When CPU core or memory size changed
