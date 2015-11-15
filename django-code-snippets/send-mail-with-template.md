@@ -16,6 +16,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template import Context
 from django.template.loader import get_template
 
+
 def send_mail_with_template(subject, template_name, user_from, *user_to, **dict_var):
   """
   Send mail with template
@@ -44,6 +45,7 @@ def send_mail_with_template(subject, template_name, user_from, *user_to, **dict_
 
 ~~~~
 from utilities import send_mail_with_template
+
 
 send_mail_with_template(
   'MAIL TITLE',
