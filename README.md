@@ -3,7 +3,7 @@
 ## Ubuntu basic settings
 
 - Install basic packages
-- Set timezon
+- Set timezone
 - Customize **vim** editor
 - Install **Fail2ban** to protect from malicious attack
 - Configure **git** setting
@@ -14,8 +14,8 @@
 
 ## Django basic settings
 
-- Install **django** and helpful packages
-- **Clone** sample django project if exist
+- Install django and helpful packages
+- Clone sample django project if exist
 - Connect with **MySQL**
 - Connect with **PostgreSQL**
 - When **schema changed**
