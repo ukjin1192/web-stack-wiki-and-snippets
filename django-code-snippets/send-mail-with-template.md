@@ -1,4 +1,4 @@
-1. `settings.py`
+#### `settings.py`
 
 ~~~~
 EMAIL_HOST = 'smtp.gmail.com'
@@ -9,7 +9,7 @@ EMAIL_USE_TLS = True
 ~~~~
 
 
-2. `utilities.py`
+#### `utilities.py`
 
 ~~~~
 from django.core.mail import EmailMultiAlternatives
@@ -40,7 +40,7 @@ def send_mail_with_template(subject, template_name, user_from, *user_to, **dict_
 ~~~~
 
 
-3. `views.py`
+#### `views.py`
 
 ~~~~
 from utilities import send_mail_with_template
@@ -54,14 +54,14 @@ send_mail_with_template(
 )
 ~~~~
 
-4. `templates/email.txt`
+#### `templates/email.txt`
 
 ~~~~
 ANY TEXT HERE
 ~~~~
 
 
-5. `templates/email_content.html`
+#### `templates/email_content.html`
 
 ~~~~
 <div>
