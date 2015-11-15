@@ -48,12 +48,12 @@
 
 ## Deploy django with amazon web service
 
-- EC2 *(OS: ubuntu 14.04 LTS)*
-- ELB *(Load balancing)*
+- **EC2** *(OS: ubuntu 14.04 LTS)*
+- **ELB** *(Load balancing)*
   - Adapt SSL certificate at ELB
-- Route 53 *(DNS)*
-- RDS *(MySQL)*
-- ElastiCache *(Redis)*
+- **Route** 53 *(DNS)*
+- **RDS** *(MySQL)*
+- **ElastiCache** *(Redis)*
 
 
 ## Utilities code snippets
