@@ -1,4 +1,4 @@
-#### `tasks.py`
+#### `cron.py`
 
 ~~~~
 from celery import task
@@ -12,7 +12,7 @@ def sample_async_task(*args, **kwargs):
 #### `views.py`
 
 ~~~~
-from utils.tasks import sample_async_task
+from cron import sample_async_task
 
 # Run task asynchronously with celery after 1 second
 sample_async_task.apply_async(
