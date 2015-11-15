@@ -16,6 +16,13 @@ urlpatterns += patterns(
 ~~~~
 
 
+#### `settings.py`
+
+~~~~
+FACEBOOK_SECRET_CODE = {FACEBOOK SECRET CODE}
+~~~~
+
+
 #### `utilities.py`
 
 ~~~~
