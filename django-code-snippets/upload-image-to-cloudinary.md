@@ -1,7 +1,10 @@
 #### Pre-settings at cloudinary
 
+- Enroll new application
 - Check API key and API secret code at <a href="http://cloudinary.com/" target="_blank">Cloudinary</a>
-- Install cloudinary
+
+
+#### Install cloudinary
 
 ~~~~
 pip install cloudinary
