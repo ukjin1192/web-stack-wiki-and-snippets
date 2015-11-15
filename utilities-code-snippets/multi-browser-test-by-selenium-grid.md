@@ -3,6 +3,7 @@
 - Visit <a href="http://www.seleniumhq.org/download/" target="_blank">Selenium</a> website
 - Download `Selenium Standalone Server`
 
+
 #### `SeleniumTest.java`
 
 ~~~~
@@ -53,3 +54,16 @@ public class SeleniumTest {
 	}
 }
 ~~~~
+
+
+#### Run Selenium grid
+
+- Open terminal
+- Move to directory which have `Selenium Standalone Server` file
+- `java -jar selenium-server-standalone-2.xx.0.jar -role hub`
+- Check URL `localhost:4444/grid/console/` on browser
+- Open another terminal
+- `java -jar selenium-server-standalone-2.xx.0.jar -role webdriver http://127.0.0.1:4444/grid/register -port 5566`
+- Check URL `localhost:4444/grid/console/` on browser
+- Open `SeleniumTest.java` and run this code
+- Check URL `localhost:5566/wd/hub/` on browser *(Sessions)*
