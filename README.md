@@ -59,5 +59,8 @@
 ## Utilities code snippets
 
 - Deploy with **Fabric**
+- Manage package with **npm**
+- Use **Gulp** as task runner
 - Multi browser test by **Selenium grid**
+- Use **Docker** at Mac OS X
 - **MeteorJS** wiki
