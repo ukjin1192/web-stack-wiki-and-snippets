@@ -56,7 +56,7 @@
 - **ElastiCache** *(Redis)*
 
 
-## Utilities code snippets
+## Utilities wiki and snippets
 
 - Deploy with **Fabric**
 - Manage package with **npm**
