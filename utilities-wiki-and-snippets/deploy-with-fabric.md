@@ -1,3 +1,14 @@
+#### Install fabric 
+
+~~~~
+$ cd {PROJECT PATH}
+$ vi fabfile.py
+~~~~
+
+
+#### `fabfile.py`
+
+~~~~
 #!/bin/bash
 import os
 from fabric.api import *
@@ -45,3 +56,4 @@ def remote_deploy():
     sudo("./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid")
     sudo("./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach")
     sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term")
+~~~~
