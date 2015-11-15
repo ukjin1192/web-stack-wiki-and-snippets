@@ -1,7 +1,11 @@
 #List
 
-1. Ubuntu basic settings
-2. Django basic settings
-3. Django code snippets
-4. Utilities code snippets
-5. Deploy django with amazon web service
+## Ubuntu basic settings
+
+## Django basic settings
+
+## Django code snippets
+
+## Deploy django with amazon web service
+
+## Utilities code snippets
