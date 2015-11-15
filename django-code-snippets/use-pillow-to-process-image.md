@@ -1,11 +1,7 @@
 #### `utilities.py`
 
 ~~~~
-from PIL import Image as ImageObj
 from PIL import ImageOps
-import os
-import StringIO
-import urllib
 
 def process_image(image_file):
   """"
