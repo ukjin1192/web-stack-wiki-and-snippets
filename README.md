@@ -1,4 +1,8 @@
-#List
+# Web stack architecture
+
+<img src="http://res.cloudinary.com/modupen/image/upload/v1447606711/github/Architecture_en.png" />
+
+# Contents in this repository
 
 ## Ubuntu basic settings
 
