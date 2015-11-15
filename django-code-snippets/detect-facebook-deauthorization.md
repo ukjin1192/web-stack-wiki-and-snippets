@@ -1,6 +1,6 @@
 #### Pre-settings at facebook developers page
 
-- <a href="https://developers.facebook.com/">Facebook Developers</a> > `My Apps` > `Settings` > `Advanced`
+- <a href="https://developers.facebook.com/" target="_blank">Facebook Developers</a> > `My Apps` > `Settings` > `Advanced`
 - Put `Deauthorize Callback URL` (e.g. `https://mysite.com/facebook/deauthorize/`)
 
 
