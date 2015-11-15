@@ -3,6 +3,7 @@
 ~~~~
 from celery import task
 
+
 @task()
 def sample_async_task(*args, **kwargs):
   return None
@@ -13,6 +14,7 @@ def sample_async_task(*args, **kwargs):
 
 ~~~~
 from cron import sample_async_task
+
 
 # Run task asynchronously with celery after 1 second
 sample_async_task.apply_async(
