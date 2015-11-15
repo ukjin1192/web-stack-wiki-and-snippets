@@ -3,6 +3,7 @@
 ~~~~
 from PIL import ImageOps
 
+
 def process_image(image_file):
   """"
   Process image file
@@ -25,6 +26,7 @@ def process_image(image_file):
 
 ~~~~
 from utilities import process_image
+
 
 for raw_file in request.FILES.getlist('file'):
   process_image(raw_file)
