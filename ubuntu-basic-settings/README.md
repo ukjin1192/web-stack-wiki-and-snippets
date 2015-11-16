@@ -105,10 +105,9 @@ $ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-cont
 ~~~~
 
 
+# Mac OS X basic settings
 
-# For Mac OS X
-
-#### Customize terminal profile *(Mac OS X only)*
+#### Customize terminal profile
 
 - Download solarized theme at <a href="https://github.com/tomislav/osx-terminal.app-colors-solarized" target="_blank">here</a> (e.g. `Solarized Dark.terminal`)
 - Open `Terminal` app
