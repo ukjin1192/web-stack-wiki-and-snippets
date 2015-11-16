@@ -9,12 +9,17 @@
 - Install basic packages
 - Set timezone
 - Customize **vim** editor
-- Customize terminal profile *(Mac OS X only)*
+- Install **zshell** and oh-my-zshell
 - Install **Fail2ban** to protect from malicious attack
 - Configure **git** setting
 - Install **nginx** *(Recommend version upper than 1.6)*
 - Install **MySQL**
 - Install **PostgreSQL**
+
+#### Mac OS X basic settings
+- Customize **terminal profile**
+- Install **brew**
+- Install **zshell** and oh-my-zshell
 
 
 ## Django basic settings
