@@ -20,16 +20,26 @@ call vundle#begin()
   Plugin 'scrooloose/syntastic'               " Chekc Syntax error when save (includes PEP)
   Plugin 'scrooloose/nerdcommenter'           " Annotate Block (\cc) or delete block (\cu)
   Plugin 'nathanaelkane/vim-indent-guides'    " Indent Guides
+  Plugin 'altercation/vim-colors-solarized'   " Solarized color scheme
 call vundle#end()
 filetype plugin indent on
 
+" Use solarized color scheme
+syntax enable
+set background=dark
+if !has('gui_running')
+  let g:solarized_termtrans=1       " Compatibility for Terminal
+  if !(&t_Co >= 256 || $TERM == 'xterm-256color')
+    let g:solarized_termcolors=16   " Make Solarized use 16 colors for Terminal support
+  endif
+endif
+colorscheme solarized
+
 " Indent Guides
-colorscheme default
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 2
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=4
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
 
 " Default settings
 set autoindent      " Auto indentation
@@ -38,9 +48,8 @@ set cindent         " Indentation for C language
 set tabstop=2       " Tab unit
 set shiftwidth=2    " Shift unit
 set hlsearch        " Highlight search keywords
-set background=dark " Backgroud color
-syntax enable       " Highlight syntax
-hi Comment ctermfg=DarkGrey
+set encoding=utf-8  " Encoding
+set fileencodings=utf-8,euckr
 
 " Status bar
 set laststatus=2    " Show status bar always
@@ -54,9 +63,9 @@ au BufReadPost *
 \ endif
 
 " Vim Key Mapping
+nmap <F5> :SyntasticToggleMode<CR>
+nmap <F6> :SyntasticCheck<CR>
 nmap <F7> :set paste!<CR>
 nmap <F8> :set paste<CR>
 nmap <F9> :NERDTree<CR>
 nmap <F10> :TagbarToggle<CR>
-nmap <F11> :SyntasticToggleMode<CR>
-nmap <F12> :SyntasticCheck<CR>
