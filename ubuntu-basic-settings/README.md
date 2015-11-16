@@ -4,7 +4,7 @@
 
 ~~~~
 $ apt-get update
-$ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev python-pip
+$ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev python-pip curl
 ~~~~
 
 
@@ -34,12 +34,19 @@ $ ./install.sh
 ~~~~
 
 
-#### Customize terminal profile *(Mac OS X only)*
+#### Install zshell and oh-my-zshell
 
-- Download solarized theme at <a href="https://github.com/tomislav/osx-terminal.app-colors-solarized" target="_blank">here</a> (e.g. `Solarized Dark.terminal`)
-- Open `Terminal` app
-- Open `Profile` by press key `Command` + `,` 
-- Click `settings` and import `.terminal` file
+~~~~
+$ apt-get install zsh
+$ chsh -s `which zsh`
+~~~~
+
+- Restart server
+- Check default shell (`echo $SHELL`)
+
+~~~~
+$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+~~~~
 
 
 #### Install Fail2ban to protect from malicious attack
@@ -96,3 +103,50 @@ $ apt-get install mysql-server libmysqlclient-dev mysql-client-core-5.5 [Enter r
 ~~~~
 $ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib [Enter password]
 ~~~~
+
+
+
+# For Mac OS X
+
+#### Customize terminal profile *(Mac OS X only)*
+
+- Download solarized theme at <a href="https://github.com/tomislav/osx-terminal.app-colors-solarized" target="_blank">here</a> (e.g. `Solarized Dark.terminal`)
+- Open `Terminal` app
+- Open `Profile` by press key `Command` + `,` 
+- Click `settings` and import `.terminal` file
+
+
+#### Install brew
+
+- Open `terminal`
+
+~~~~
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+~~~~
+
+- Put password
+- Install some requirements
+
+
+#### Install zshell and oh-my-zshell
+
+~~~~
+$ brew update
+$ brew install zsh
+$ command -v zsh | sudo tee -a /etc/shells
+~~~~
+
+- Put password
+
+~~~~
+$ chsh -s `which zsh`
+~~~~
+
+- Put password
+- Check default shell (`echo $SHELL`)
+
+~~~~
+$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+~~~~
+
+- Restart `terminal`
