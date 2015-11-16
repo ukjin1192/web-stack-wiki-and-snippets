@@ -8,8 +8,8 @@
 
 - Install basic packages
 - Set timezone
-- Customize **vim** editor *(Linux)*
-- Customize bash shell profile and vim editor *(Mac OS X with Docker)*
+- Customize **vim** editor
+- Customize terminal profile *(Mac OS X only)*
 - Install **Fail2ban** to protect from malicious attack
 - Configure **git** setting
 - Install **nginx** *(Recommend version upper than 1.6)*
