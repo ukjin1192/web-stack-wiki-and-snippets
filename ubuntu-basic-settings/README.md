@@ -15,7 +15,7 @@ $ dpkg-reconfigure tzdata [Select city]
 ~~~~
 
 
-#### Customize vim editor *(Linux)*
+#### Customize vim editor
 
 ~~~~
 $ apt-get install vim ctags cmake
@@ -34,7 +34,7 @@ $ ./install.sh
 ~~~~
 
 
-#### Customize bash shell profile and vim editor *(Mac OS X with Docker)*
+#### Customize terminal profile *(Mac OS X only)*
 
 - Download solarized theme at <a href="https://github.com/tomislav/osx-terminal.app-colors-solarized" target="_blank">here</a> (e.g. `Solarized Dark.terminal`)
 - Open `Terminal` app
