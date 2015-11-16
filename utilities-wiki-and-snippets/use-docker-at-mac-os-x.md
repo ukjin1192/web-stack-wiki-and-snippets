@@ -19,7 +19,7 @@ $ docker images
 # Remove image
 $ docker rmi {IMAGE NAME}
 
-# Run container
+# Create container
 $ docker run -i -t --name {CONTAINER NAME} {IMAGE NAME} /bin/bash
 
 # List-up whole container
@@ -33,6 +33,9 @@ $ docker start {CONTAINER NAME}
 
 # Restart container
 $ docker restart {CONTAINER NAME}
+
+# Attach container
+$ docker attach {CONTAINER NAME}
 
 # Stop container
 $ docker stop {CONTAINER NAME}
