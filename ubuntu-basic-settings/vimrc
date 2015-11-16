@@ -21,6 +21,7 @@ call vundle#begin()
   Plugin 'scrooloose/nerdcommenter'           " Annotate Block (\cc) or delete block (\cu)
   Plugin 'nathanaelkane/vim-indent-guides'    " Indent Guides
   Plugin 'altercation/vim-colors-solarized'   " Solarized color scheme
+  Plugin 'bling/vim-airline'                  " Status bar
 call vundle#end()
 filetype plugin indent on
 
@@ -30,6 +31,7 @@ set background=dark
 if !has('gui_running')
   let g:solarized_termtrans=1       " Compatibility for Terminal
   if !(&t_Co >= 256 || $TERM == 'xterm-256color')
+    set t_Co=16
     let g:solarized_termcolors=16   " Make Solarized use 16 colors for Terminal support
   endif
 endif
@@ -50,11 +52,7 @@ set shiftwidth=2    " Shift unit
 set hlsearch        " Highlight search keywords
 set encoding=utf-8  " Encoding
 set fileencodings=utf-8,euckr
-
-" Status bar
 set laststatus=2    " Show status bar always
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F
-hi statusline ctermfg=0 ctermbg=6
 
 " Memorize cursor position
 au BufReadPost *
