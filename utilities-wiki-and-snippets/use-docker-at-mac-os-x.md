@@ -25,6 +25,9 @@ $ docker run -i -t --name {CONTAINER NAME} {IMAGE NAME} /bin/bash
 # List-up whole container
 $ docker ps -a
 
+# Rename container
+$ docker rename {ORIGINAL CONTAINER NAME} {NEW CONTAINER NAME}
+
 # Remove container
 $ docker rm {CONTAINER NAME}
 
