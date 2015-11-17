@@ -17,7 +17,7 @@ call vundle#begin()
   Plugin 'Valloric/YouCompleteMe'             " Auto complete
   Plugin 'majutsushi/tagbar'                  " Check function and global variable at side bar
   Plugin 'scrooloose/nerdtree'                " Show directory tree at side bar
-  Plugin 'scrooloose/syntastic'               " Chekc Syntax error when save (includes PEP)
+  Plugin 'scrooloose/syntastic'               " Check Syntax error when save (includes PEP)
   Plugin 'scrooloose/nerdcommenter'           " Annotate Block (\cc) or delete block (\cu)
   Plugin 'nathanaelkane/vim-indent-guides'    " Indent Guides
   Plugin 'altercation/vim-colors-solarized'   " Solarized color scheme
@@ -25,7 +25,7 @@ call vundle#begin()
 call vundle#end()
 filetype plugin indent on
 
-" Use solarized color scheme
+" Solarized color scheme
 syntax enable
 set background=dark
 if !has('gui_running')
