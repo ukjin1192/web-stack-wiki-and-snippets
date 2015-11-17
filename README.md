@@ -20,6 +20,7 @@
 - Customize **terminal profile**
 - Install **brew**
 - Install **zshell** and oh-my-zshell
+- Optimize key input
 
 
 ## Django basic settings
