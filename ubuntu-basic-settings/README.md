@@ -89,9 +89,12 @@ $ git commit --amend --reset-author
 
 #### Install nginx *(Recommend version upper than 1.6)*
 
+- Only for ubuntu 14.04
 ~~~~
-# Only for ubuntu 14.04
 $ apt-get install software-properties-common
+~~~~
+
+~~~~
 $ add-apt-repository ppa:nginx/stable [Enter]
 $ apt-get update
 $ apt-get install nginx
