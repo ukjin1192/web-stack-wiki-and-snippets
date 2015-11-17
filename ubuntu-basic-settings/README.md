@@ -163,3 +163,17 @@ $ source ~/.zshrc
 ~~~~
 
 - Restart `terminal`
+
+
+#### Optimize key input
+
+- Open `terminal`
+
+~~~~
+# Enable key repeat
+$ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+~~~~
+
+- Download Karabiner from <a href="https://pqrs.org/osx/karabiner/" target="_blank">here</a>
+- `Change Key` > `For PC Users`
+- Check `Use PC Style Home/End` and `Use PC Style PageUp/PageDown`
