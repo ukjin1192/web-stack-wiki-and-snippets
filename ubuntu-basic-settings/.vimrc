@@ -63,6 +63,8 @@ au BufReadPost *
 \ endif   
 
 " Vim Key Mapping
+nmap <F1> :tabprev<CR>
+nmap <F2> :tabnext<CR>
 nmap <F5> :SyntasticToggleMode<CR>
 nmap <F6> :SyntasticCheck<CR>
 nmap <F7> :TagbarToggle<CR>
