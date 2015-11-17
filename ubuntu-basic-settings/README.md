@@ -22,7 +22,7 @@ $ apt-get install vim ctags cmake
 $ vi ~/.vimrc
 ~~~~
 
-- Copy and paste vimrc
+- Copy and paste `.vimrc`
 
 ~~~~
 $ mkdir -p ~/.vim/bundle
@@ -46,6 +46,13 @@ $ chsh -s `which zsh`
 
 ~~~~
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+$ vi ~/.zshrc
+~~~~
+
+- Copy and paste `.zshrc`
+
+~~~~
+$ source ~/.zshrc
 ~~~~
 
 
@@ -146,6 +153,13 @@ $ chsh -s `which zsh`
 
 ~~~~
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+$ vi ~/.zshrc
+~~~~
+
+- Copy and paste `.zshrc`
+
+~~~~
+$ source ~/.zshrc
 ~~~~
 
 - Restart `terminal`
