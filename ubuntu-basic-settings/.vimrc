@@ -65,9 +65,11 @@ au BufReadPost *
 " Vim Key Mapping
 nmap <F1> :tabprev<CR>
 nmap <F2> :tabnext<CR>
-nmap <F5> :SyntasticToggleMode<CR>
-nmap <F6> :SyntasticCheck<CR>
-nmap <F7> :TagbarToggle<CR>
+nmap <F3> :w<CR>
+nmap <F4> :q<CR>
+nmap <F5> :SyntasticCheck<CR>
+nmap <F6> :TagbarToggle<CR>
+nmap <F7> :set paste!<CR>
 nmap <F8> :set paste<CR>
 nmap <F9> :CtrlP<CR>
 nmap <F10> :NERDTree<CR>
