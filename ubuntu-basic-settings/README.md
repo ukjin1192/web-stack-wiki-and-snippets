@@ -46,6 +46,7 @@ $ chsh -s `which zsh`
 
 ~~~~
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+$ /bin/zsh
 $ vi ~/.zshrc
 ~~~~
 
@@ -83,7 +84,6 @@ $ service fail2ban restart
 ~~~~
 $ git config --global user.name {USERNAME}
 $ git config --global user.email {EMAIL ADDRESS}
-$ git commit --amend --reset-author
 ~~~~
 
 
@@ -158,6 +158,7 @@ $ chsh -s `which zsh`
 
 ~~~~
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+$ /bin/zsh
 $ vi ~/.zshrc
 ~~~~
 
