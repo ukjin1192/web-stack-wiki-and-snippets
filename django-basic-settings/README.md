@@ -4,6 +4,7 @@
 
 ~~~~
 $ pip install django django-debug-toolbar fabric httplib2
+$ django-admin startproject {PROJECT NAME}
 $ cd {PROJECT PATH}
 $ ./manage.py migrate
 $ ./manage.py runserver 0.0.0.0:8000
