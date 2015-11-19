@@ -20,7 +20,7 @@ $ docker images
 $ docker rmi {IMAGE NAME}
 
 # Create container
-$ docker run -i -t -p {EXPOSING PORT} --name {CONTAINER NAME} {IMAGE NAME} '{COMMAND} (e.g. /bin/bash)'
+$ docker run -i -t -p {EXPOSING PORT} --name {CONTAINER NAME} {IMAGE NAME} {COMMAND(e.g. /bin/bash)}
 
 # List-up whole container
 $ docker ps -a
@@ -43,7 +43,10 @@ $ docker attach {CONTAINER NAME}
 # Stop container
 $ docker stop {CONTAINER NAME}
 
-# Create imagefile
+# Create image
 $ vi Dockerfile [Fill out contents]
-$ docker build --tag {IMAGE NAME}:{VERSION}
+$ docker build --tag {IMAGE NAME}:{TAG}
+
+# Create image from existing container
+$ docker commit {CONTAINER NAME} {NEW IMAGE NAME}:{TAG}
 ~~~~
