@@ -28,6 +28,12 @@ $ cd /var/www/
 $ git clone {GIT REMOTE ORIGIN URL}
 ~~~~
 
+- Install pip requirements
+
+~~~~
+$ pip install -r {PATH TO PIP REQUIREMENTS}/requirements.txt
+~~~~
+
 
 #### Connect with MySQL
 
