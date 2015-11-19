@@ -50,7 +50,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
       'ENGINE': 'django.db.backends.mysql',
       'NAME': '{DB NAME}',
       'USER': 'root',
-      'PASSWORD': '{PASSWORD}',
+      'PASSWORD': '{MySQL ROOT PASSWORD}',
       'HOST': '',
       'PORT': '',
       'DEFAULT-CHARACTER-SET': 'utf8',
@@ -74,7 +74,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
       'ENGINE': 'django.db.backends.postgresql_psycopg2',
       'NAME': '{DB NAME}',
       'USER': 'root',
-      'PASSWORD': '{PASSWORD}',
+      'PASSWORD': '{PostgreSQL PASSWORD}',
       'HOST': '127.0.0.1',
       'PORT': '5432',
     }
@@ -94,7 +94,7 @@ $ ./manage.py migrate {APP NAME}
 #### Use django-suit *(Custom admin interface)*
 
 ~~~~
-$ pip instal django-suit
+$ pip install django-suit
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 
   INSTALLED_APPS = (
@@ -198,7 +198,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   djcelery.setup_loader()
 
   BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-  CELERYD_PREFETCH_MULTIPLIER = 1   # More time-consuming tasks, More closer to number 1
+  # CELERYD_PREFETCH_MULTIPLIER = 1   # More time-consuming tasks, More closer to number 1
   CELERYD_CONCURRENCY = 1           # Default : Number of CPU cores
 
 $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
@@ -233,7 +233,7 @@ $ ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill
 ~~~~
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 
-  # Execute periodic tasks by DB scheduler to enroll tasks at Admin
+  # Enroll tasks at admin > djcelery
   CELERY_IMPORTS = ('utils.cron',)
   CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 ~~~~
@@ -313,6 +313,7 @@ $ pip install pillow
 $ vi nginx.conf
 
   worker_processes = {NUMBER OF CORE}
+  worker_connections = {MEMORY SIZE IN MEGA BYTES}
 
 
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
