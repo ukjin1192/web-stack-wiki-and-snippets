@@ -18,9 +18,8 @@
 
 #### Mac OS X basic settings
 - Customize **terminal profile**
-- Install **brew**
-- Install **zshell** and oh-my-zshell
 - Optimize key input
+- Install **brew**
 
 
 ## Django basic settings
