@@ -40,7 +40,7 @@ $ pip install -r {PATH TO PIP REQUIREMENTS}/requirements.txt
 ~~~~
 $ pip install MySQL-python
 $ service mysql restart
-$ mysql -u root [Enter password]
+$ mysql -u root -p [Enter password]
 mysql $ CREATE DATABASE {DB NAME} DEFAULT CHARACTER SET utf8;
 mysql $ exit;
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
