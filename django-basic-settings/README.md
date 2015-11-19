@@ -281,7 +281,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
 
   import newrelic.agent
   
-  newrelic.agent.initialize({PROJECT PATH}/conf/newrelic/newrelic.ini')
+  newrelic.agent.initialize({PATH TO NEW RELIC CONFIGURATION}/newrelic.ini')
   application = newrelic.agent.wsgi_application()(application)
 ~~~~
 
