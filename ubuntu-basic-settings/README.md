@@ -127,50 +127,6 @@ $ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-cont
 - Click `settings` and import `.terminal` file
 
 
-#### Install brew
-
-- Open `terminal`
-
-~~~~
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-~~~~
-
-- Put password
-- Install some requirements
-
-
-#### Install zshell and oh-my-zshell
-
-~~~~
-$ brew update
-$ brew install zsh
-$ command -v zsh | sudo tee -a /etc/shells
-~~~~
-
-- Put password
-
-~~~~
-$ chsh -s `which zsh`
-~~~~
-
-- Put password
-- Check default shell (`echo $SHELL`)
-
-~~~~
-$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-$ /bin/zsh
-$ vi ~/.zshrc
-~~~~
-
-- Copy and paste `.zshrc`
-
-~~~~
-$ source ~/.zshrc
-~~~~
-
-- Restart `terminal`
-
-
 #### Optimize key input
 
 - Open `terminal`
@@ -183,3 +139,15 @@ $ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 - Download Karabiner from <a href="https://pqrs.org/osx/karabiner/" target="_blank">here</a>
 - `Change Key` > `For PC Users`
 - Check `Use PC Style Home/End` and `Use PC Style PageUp/PageDown`
+
+
+#### Install brew
+
+- Open `terminal`
+
+~~~~
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+~~~~
+
+- Put password
+- Install some requirements
