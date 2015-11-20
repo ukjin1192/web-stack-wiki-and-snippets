@@ -49,4 +49,8 @@ $ docker build --tag {IMAGE NAME}:{TAG}
 
 # Create image from existing container
 $ docker commit {CONTAINER NAME} {NEW IMAGE NAME}:{TAG}
+
+# Detach container
+(In container) Ctrl-P + Ctrl-Q
+
 ~~~~
