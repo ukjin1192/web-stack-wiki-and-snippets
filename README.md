@@ -39,6 +39,8 @@
 - Use **cerely beat** as cron task runner
 - Celery beat command
 - Install uWSGI and configure **Nginx and uWSGI settings**
+- Nginx command
+- uWSGI command
 - Configure **New Relic** settings
 - Install **Pillow** for image processing
 - When **CPU** core or **memory** size changed
