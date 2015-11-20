@@ -175,7 +175,7 @@ $ ./manage.py collectstatic --noinput
 #### Redis command
 
 ~~~~
-$ redis-server --daemonize yes  # Run redis on background
+$ service redis-server start    # Run redis as daemon
 $ redis-cli save                # Save redis
 $ redis-cli flushall            # Flush redis DB
 $ redis-cli shutdown            # Shutdown redis
