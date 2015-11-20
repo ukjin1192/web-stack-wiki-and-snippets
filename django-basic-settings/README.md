@@ -216,13 +216,19 @@ $ touch logs/celery_daemon.log logs/celery_beat.log
 
 #### Celery command
 
+- Check rabbitmq is running. If it is not running, type
+
+~~~~
+$ service rabbitmq-server start
+~~~~
+
 ~~~~
 $ cd {PROJECT PATH}
 $ export C_FORCE_ROOT='true'
-$ ./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid   # Start celery worker
-$ ./manage.py celery worker --loglevel=debug   # Start celeryt worker with debug mode 
-$ ./manage.py celeryctl purge                  # Flush celery tasks
-$ ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery worker
+$ ./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid   # Start celery as daemon
+$ ./manage.py celery worker --loglevel=debug    # Start celery with debug mode 
+$ ./manage.py celery purge                      # Flush celery tasks
+$ ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery
 ~~~~
 
 
@@ -261,8 +267,24 @@ $ mkdir -p {PROJECT PATH}/logs/
 $ cd {PROJECT PATH}/logs/
 $ touch uwsgi.log uwsgi.pid
 $ chown www-data.www-data uwsgi.log uwsgi.pid
-$ service nginx restart
-$ uwsgi --uid www-data --gid www-data --emperror /etc/uwsgi/vassals --master --die-on-term
+~~~~
+
+
+#### Nginx command
+
+~~~~
+$ service nginx status    # Check nginx status
+$ service nginx start     # Start nginx
+$ service nginx restart   # Restart nginx
+$ service nginx stop      # Stop nginx
+~~~~
+
+
+#### uWSGI command
+
+~~~~
+$ uwsgi --uid www-data --gid www-data --emperror /etc/uwsgi/vassals --master --die-on-term  # Run uWSGI
+$ ps -ef | grep uwsgi | grep -v grep | awk "{print $2}" | xargs kill -15'   # Stop uWSGI
 ~~~~
 
 
