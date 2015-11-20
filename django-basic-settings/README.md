@@ -175,10 +175,10 @@ $ ./manage.py collectstatic --noinput
 #### Redis command
 
 ~~~~
-$ redis-server          # Start redis
-$ redis-cli save        # Save redis DB
-$ redis-cli flushall    # Flush redis DB
-$ redis-cli shutdown    # Shutdown redis
+$ redis-server --daemonize yes  # Run redis on background
+$ redis-cli save                # Save redis
+$ redis-cli flushall            # Flush redis DB
+$ redis-cli shutdown            # Shutdown redis
 ~~~~
 
 
