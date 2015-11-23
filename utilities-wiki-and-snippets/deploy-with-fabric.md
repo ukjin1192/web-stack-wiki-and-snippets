@@ -30,23 +30,14 @@ def remote_deploy():
   """
   with cd(ROOT_DIR):
     sudo("git pull origin master")
-  
-  with cd(ROOT_DIR + "/" + PROJECT_NAME + "/static/css/"):
-    local("sass styles.scss:styles.css")
-  
-  with cd(ROOT_DIR):
     sudo("./manage.py collectstatic --noinput")
     sudo("./manage.py compress --force")
-  
     with settings(warn_only=True):
-      local("ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15")
-    
+      sudo("ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15")
     with settings(warn_only=True):
-      local("ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15")
-    
+      sudo("ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15")
     with settings(warn_only=True):
       sudo("ps -ef | grep uwsgi | grep -v grep | awk '{print $2}' | xargs kill -15")
-    
     sudo("./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid")
     sudo("./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach")
     sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term --daemonize=" + ROOT_DIR + "/logs/uwsgi.log")
