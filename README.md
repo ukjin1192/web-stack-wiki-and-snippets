@@ -41,9 +41,9 @@
 - Install uWSGI and configure **Nginx and uWSGI settings**
 - Nginx command
 - uWSGI command
+- When number of **CPU** core or **memory** size changed
 - Configure **New Relic** settings
 - Install **Pillow** for image processing
-- When **CPU** core or **memory** size changed
 
 
 ## Django code snippets
