@@ -222,11 +222,13 @@ $ touch logs/celery_daemon.log logs/celery_beat.log
 $ service rabbitmq-server start
 ~~~~
 
-- If you want to run celery with root, you should add following code at shell configuration file such as `~/.bashrc` or `~/.zshrc`
+- If you want to run celery with root, add following code at shell configuration file such as `~/.bashrc` or `~/.zshrc`
 
 ~~~~
 $ vi {SHELL CONFIGURATION FILE}
-$ export C_FORCE_ROOT='true'
+
+  export C_FORCE_ROOT='true'
+
 $ source {SHELL CONFIGURATION FILE}
 ~~~~
 
@@ -289,7 +291,7 @@ $ service nginx stop      # Stop nginx
 #### uWSGI command
 
 ~~~~
-$ uwsgi --uid www-data --gid www-data --emperror /etc/uwsgi/vassals --master --die-on-term  --daemonize=true  # Run uWSGI
+$ uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term  --daemonize={LOG FILE PATH} # Run uWSGI
 $ ps -ef | grep uwsgi | grep -v grep | awk "{print $2}" | xargs kill -15'   # Stop uWSGI
 ~~~~
 
