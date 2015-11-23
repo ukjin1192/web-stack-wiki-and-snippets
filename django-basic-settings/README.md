@@ -296,6 +296,16 @@ $ ps -ef | grep uwsgi | grep -v grep | awk "{print $2}" | xargs kill -15'   # St
 ~~~~
 
 
+#### When number of CPU core or memory size changed
+
+~~~~~
+$ vi nginx.conf
+
+  worker_processes = {NUMBER OF CPU CORE}
+  worker_connections = {MEMORY SIZE IN MEGA BYTES}
+~~~~
+
+
 #### Configure New Relic settings
 
 - Visit <a href="http://newrelic.com/" target="_blank">newrelic.com</a> and login
@@ -335,18 +345,3 @@ $ pip install pillow
 ~~~~
 
 - Check available list 
-
-
-#### When CPU core or memory size changed
-
-~~~~~
-$ vi nginx.conf
-
-  worker_processes = {NUMBER OF CORE}
-  worker_connections = {MEMORY SIZE IN MEGA BYTES}
-
-
-$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
-  
-  CELERYD_CONCURRENCY = {NUMBER OF CORE}
-~~~~
