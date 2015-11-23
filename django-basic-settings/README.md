@@ -222,9 +222,16 @@ $ touch logs/celery_daemon.log logs/celery_beat.log
 $ service rabbitmq-server start
 ~~~~
 
+- If you want to run celery with root, you should add following code at shell configuration file such as `~/.bashrc` or `~/.zshrc`
+
+~~~~
+$ vi {SHELL CONFIGURATION FILE}
+$ export C_FORCE_ROOT='true'
+$ source {SHELL CONFIGURATION FILE}
+~~~~
+
 ~~~~
 $ cd {PROJECT PATH}
-$ export C_FORCE_ROOT='true'
 $ ./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid   # Start celery as daemon
 $ ./manage.py celery worker --loglevel=debug    # Start celery with debug mode 
 $ ./manage.py celery purge                      # Flush celery tasks
@@ -248,7 +255,6 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 #### Celery beat command
 
 ~~~~
-$ export C_FORCE_ROOT='true'
 $ ./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach   # Start celery beat
 $ ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery beat
 ~~~~
@@ -283,7 +289,7 @@ $ service nginx stop      # Stop nginx
 #### uWSGI command
 
 ~~~~
-$ uwsgi --uid www-data --gid www-data --emperror /etc/uwsgi/vassals --master --die-on-term  # Run uWSGI
+$ uwsgi --uid www-data --gid www-data --emperror /etc/uwsgi/vassals --master --die-on-term  --daemonize=true  # Run uWSGI
 $ ps -ef | grep uwsgi | grep -v grep | awk "{print $2}" | xargs kill -15'   # Stop uWSGI
 ~~~~
 
