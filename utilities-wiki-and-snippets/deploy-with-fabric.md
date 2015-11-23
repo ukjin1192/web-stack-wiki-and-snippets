@@ -1,6 +1,7 @@
 #### Install fabric 
 
 ~~~~
+$ pip install fabric
 $ cd {PROJECT PATH}
 $ vi fabfile.py
 ~~~~
@@ -39,21 +40,14 @@ def remote_deploy():
   
     with settings(warn_only=True):
       local("ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15")
-      local("sleep 3")
-      local("ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -9")
     
     with settings(warn_only=True):
       local("ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15")
-      local("sleep 3")
-      local("ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -9")
     
     with settings(warn_only=True):
       sudo("ps -ef | grep uwsgi | grep -v grep | awk '{print $2}' | xargs kill -15")
-      sudo("sleep 3")
-      sudo("ps -ef | grep uwsgi | grep -v grep | awk '{print $2}' | xargs kill -9")
     
-    sudo("export C_FORCE_ROOT='true'")
     sudo("./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid")
     sudo("./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach")
-    sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term")
+    sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term --daemonize=" + PROJECT_DIR + "/logs/uwsgi.log")
 ~~~~
