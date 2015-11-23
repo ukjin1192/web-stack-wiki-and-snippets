@@ -14,7 +14,7 @@ $ vi fabfile.py
 import os
 from fabric.api import *
 
-PROJECT_DIR = os.path.dirname(__file__)
+ROOT_DIR = os.path.dirname(__file__)
 PROJECT_NAME = {PROJECT NAME}
 
 # Remote server information
@@ -28,13 +28,13 @@ def remote_deploy():
   """
   Deploy at remote server
   """
-  with cd(PROJECT_DIR):
+  with cd(ROOT_DIR):
     sudo("git pull origin master")
   
-  with cd(PROJECT_DIR + "/" + PROJECT_NAME + "/static/css/"):
+  with cd(ROOT_DIR + "/" + PROJECT_NAME + "/static/css/"):
     local("sass styles.scss:styles.css")
   
-  with cd(PROJECT_DIR):
+  with cd(ROOT_DIR):
     sudo("./manage.py collectstatic --noinput")
     sudo("./manage.py compress --force")
   
@@ -49,5 +49,5 @@ def remote_deploy():
     
     sudo("./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid")
     sudo("./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach")
-    sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term --daemonize=" + PROJECT_DIR + "/logs/uwsgi.log")
+    sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term --daemonize=" + ROOT_DIR + "/logs/uwsgi.log")
 ~~~~
