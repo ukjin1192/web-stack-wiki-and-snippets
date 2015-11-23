@@ -3,7 +3,7 @@
 #### Install django and helpful packages
 
 ~~~~
-$ pip install django django-debug-toolbar fabric httplib2
+$ pip install django django-debug-toolbar httplib2
 $ django-admin startproject {PROJECT NAME}
 $ cd {PROJECT PATH}
 $ ./manage.py migrate
