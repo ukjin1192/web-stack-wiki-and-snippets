@@ -7,7 +7,8 @@
 #### Install firebase
 
 ~~~~
-pip install firebase
+$ pip install requests
+$ pip install python-firebase
 ~~~~
 
 
