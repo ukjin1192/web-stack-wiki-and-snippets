@@ -207,7 +207,6 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
 $ cd {PROJECT PATH}
 $ ./manage.py migrate
 $ ./manage.py collectstatic --noinput
-$ touch logs/celery_daemon.log logs/celery_beat.log
 ~~~~
 
 
