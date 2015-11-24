@@ -73,6 +73,7 @@
 - Deploy with **Fabric**
 - Manage package with **npm**
 - Use **Gulp** as task runner
+- Use **SASS** for stylesheet
 - Multi browser test by **Selenium grid**
 - Use **Docker** at Mac OS X
 - **MeteorJS** wiki
