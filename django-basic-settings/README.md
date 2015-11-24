@@ -196,10 +196,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   )
 
   djcelery.setup_loader()
-
   BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-  # CELERYD_PREFETCH_MULTIPLIER = 1   # More time-consuming tasks, More closer to number 1
-  CELERYD_CONCURRENCY = 1           # Default : Number of CPU cores
 
 $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
 
@@ -222,7 +219,7 @@ $ touch logs/celery_daemon.log logs/celery_beat.log
 $ service rabbitmq-server start
 ~~~~
 
-- If you want to run celery with root, add following code at shell configuration file such as `~/.bashrc` or `~/.zshrc`
+- If you want to run celery with root, add following code at shell configuration file such as `~/.zshrc`
 
 ~~~~
 $ vi {SHELL CONFIGURATION FILE}
@@ -248,7 +245,6 @@ $ ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill
 ~~~~
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 
-  # Enroll tasks at admin > djcelery
   CELERY_IMPORTS = ('utils.cron',)
   CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 ~~~~
