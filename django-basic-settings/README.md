@@ -6,7 +6,6 @@
 $ pip install django django-debug-toolbar httplib2
 $ django-admin startproject {PROJECT NAME}
 $ cd {PROJECT PATH}
-$ ./manage.py migrate
 $ ./manage.py runserver 0.0.0.0:8000
 ~~~~
 
@@ -132,8 +131,19 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
     'compressor.finders.CompressorFinder',
   )
 
+$ vi {TEMPLATE FILE}
+
+  {% load compress %}
+  ...
+  {% compress css %}
+  ...
+  {% endcompress %}
+  ...
+  {% compress js %}
+  ...
+  {% endcompress %}
+
 $ cd {PROJECT PATH}
-$ ./manage.py migrate
 $ ./manage.py collectstatic --noinput
 ~~~~
 
