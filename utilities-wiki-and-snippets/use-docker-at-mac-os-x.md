@@ -1,7 +1,7 @@
 #### Install docker
 
 - Download docker at <a href="https://www.docker.com/docker-toolbox" target="_blank">this site</a>
-- Docker will install with VirtualBox
+- Docker will be installed with VirtualBox
 
 
 #### Docker command
@@ -49,6 +49,9 @@ $ docker build --tag {IMAGE NAME}:{TAG}
 
 # Create image from existing container
 $ docker commit {CONTAINER NAME} {NEW IMAGE NAME}:{TAG}
+
+# Check exposing port of container
+$ docker port {CONTAINER NAME}
 
 # Detach container
 (In container) Ctrl-P + Ctrl-Q
