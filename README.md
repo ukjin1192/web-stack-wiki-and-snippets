@@ -58,6 +58,12 @@
 - Use **firebase** as realtime DB
 
 
+## Django sample project
+
+- **Directory structure**
+- Things that should be customized
+
+
 ## Deploy django with amazon web service
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
