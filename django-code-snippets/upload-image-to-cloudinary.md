@@ -7,7 +7,7 @@
 #### Install cloudinary
 
 ~~~~
-pip install cloudinary
+$ pip install cloudinary
 ~~~~
 
 
