@@ -2,7 +2,7 @@
 
 ~~~~
 $ apt-get update
-$ apt-get install nodejs npm
+$ apt-get install nodejs npm nodejs-legacy
 ~~~~
 
 
