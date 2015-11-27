@@ -53,7 +53,7 @@ $ npm install --save lodash
   "name": "mysite.com",
   "version": "0.0.0",
   "description": "",
-  "main": "mysite/static/js/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -69,14 +69,24 @@ $ npm install --save lodash
 #### Node style programming example
 
 ~~~~
-$ vi mysite/static/js/index.js
+$ vi index.js
 
   'use strict';
 
+  var _ = require('lodash');
+  
+  module.exports = function helloWorld() {
+    _.times(10, function (index) {
+      console.log('[' + index + '] hello world!');
+    });
+  };
+  
+$ vi test.js
+
+  'use strict';
+  
   var helloWorld = require('./');
   helloWorld();
   
-$ vi mysite/static/js/test.js
-
-
+$ node test.js
 ~~~~
