@@ -39,7 +39,7 @@ $ gulp
 #### Convert SASS to CSS
 
 ~~~~
-$ npm install --save-dev gulp-sass
+$ npm install gulp-sass --save-dev
 $ vi gulpfile.js
 
   var gulp = require('gulp');
