@@ -1,6 +1,6 @@
 # Web stack architecture
 
-<img src="http://res.cloudinary.com/modupen/image/upload/v1447641681/github/Architecture.png" />
+<img src="https://res.cloudinary.com/modupen/image/upload/v1448647133/github/Architecture.png" />
 
 # Contents in this repository
 
@@ -58,12 +58,6 @@
 - Use **firebase** as realtime DB
 
 
-## Django sample project
-
-- **Directory structure**
-- Things that should be customized
-
-
 ## Deploy django with amazon web service
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
@@ -78,6 +72,7 @@
 
 - Deploy with **Fabric**
 - Manage package with **npm**
+- Use **Webpack** as module bundler
 - Use **Gulp** as task runner
 - Use **SASS** for stylesheet
 - Multi browser test by **Selenium grid**
