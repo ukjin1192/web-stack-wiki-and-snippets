@@ -10,14 +10,19 @@ $ apt-get install nodejs npm nodejs-legacy
 
 #### npm command
 
-- npm option
-  - --global : Install package globally
-  - --save : Install package to run this application 
-  - --save-dev : Development purpose like unit test or minification
-
 ~~~~
-# Install
-$ npm install {MODULE NAME}@{VERSION} [option]
+# Install packages with package.json
+$ cd {PATH TO package.json}
+$ npm install
+
+# Install package globally
+$ npm install {MODULE NAME}@{VERSION} --global
+
+# Install package to run this application
+$ npm install {MODULE NAME}@{VERSION} --save
+
+# Install package for development purpose (e.g. unit test or minification)
+$ npm install {MODULE NAME}@{VERSION} --save-dev
 
 # Remove
 $ npm remove {MODULE NAME}
@@ -27,4 +32,51 @@ $ npm list {MODULE NAME}
 
 # Check list of whole module
 $ npm ls --depth=0
+~~~~
+
+
+#### Package management
+
+- Initiate package management
+
+~~~~
+$ cd {PROJECT PATH}
+$ npm init [Put information]
+$ npm install --save lodash
+~~~~
+
+- Recommend to add `node_modules/` to `.gitignore`
+- Example of `package.json`
+
+~~~~
+{
+  "name": "mysite.com",
+  "version": "0.0.0",
+  "description": "",
+  "main": "mysite/static/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "lodash": "~3.10.1"
+  }
+}
+~~~~
+
+
+#### Node style programming example
+
+~~~~
+$ vi mysite/static/js/index.js
+
+  'use strict';
+
+  var helloWorld = require('./');
+  helloWorld();
+  
+$ vi mysite/static/js/test.js
+
+
 ~~~~
