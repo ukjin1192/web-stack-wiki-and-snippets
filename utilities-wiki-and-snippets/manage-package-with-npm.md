@@ -1,5 +1,7 @@
 #### Install npm
 
+- Install `nodejs-legacy` to use `node` command instead of `nodejs`
+
 ~~~~
 $ apt-get update
 $ apt-get install nodejs npm nodejs-legacy
@@ -8,12 +10,14 @@ $ apt-get install nodejs npm nodejs-legacy
 
 #### npm command
 
+- npm option
+  - --global : Install package globally
+  - --save : Install package to run this application 
+  - --save-dev : Development purpose like unit test or minification
+
 ~~~~
 # Install
 $ npm install {MODULE NAME}@{VERSION} [option]
-  -g : Install package globally
-  --save : Install package to run this application 
-  --save-dev : Development purpose like unit test or minification
 
 # Remove
 $ npm remove {MODULE NAME}
