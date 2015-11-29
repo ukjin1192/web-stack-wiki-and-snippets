@@ -28,12 +28,13 @@ $ vi webpack.config.js
     }
   };
   
-$ webpack
 $ vi {PROJECT PATH}/package.json
 
   ...
   "main": "{PATH TO JS DIRECTORY}/dist/index.js",
   ...
+  
+$ webpack
 ~~~~
 
 
