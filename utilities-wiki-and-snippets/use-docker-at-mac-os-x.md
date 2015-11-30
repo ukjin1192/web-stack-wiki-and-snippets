@@ -56,4 +56,6 @@ $ docker port {CONTAINER NAME}
 # Detach container
 (In container) Ctrl-P + Ctrl-Q
 
+# Start new shell on running container
+$ docker exec -it {CONTAINER NAME} /bin/bash
 ~~~~
