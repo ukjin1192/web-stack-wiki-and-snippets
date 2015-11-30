@@ -60,6 +60,7 @@ $ vi index.html
 
 #### Create configuration file and bundle it
 
+~~~~
 $ vi webpack.config.js
 
   'use strict';
