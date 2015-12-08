@@ -47,14 +47,20 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
 " Default settings
 set autoindent      " Auto indentation
 set smartindent     " Smart indentation
-set cindent         " Indentation for C language
-set tabstop=2       " Tab unit
-set shiftwidth=2    " Shift unit
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set hlsearch        " Highlight search keywords
 set encoding=utf-8  " Encoding
 set fileencodings=utf-8,euckr
 set laststatus=2    " Show status bar always
-set splitright      " Position window to right if split vertically
+set splitright      " Position vertically split window to right
+
+" Filetype customization
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=0 expandtab
+autocmd Filetype python setlocal tabstop=8 shiftwidth=4 softtabstop=4 expandtab
 
 " Memorize cursor position
 au BufReadPost *
