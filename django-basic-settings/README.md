@@ -3,7 +3,7 @@
 #### Install django and helpful packages
 
 ~~~~
-$ pip install django django-debug-toolbar httplib2
+$ pip install django django-debug-toolbar django-extensions httplib2
 $ django-admin startproject {PROJECT NAME}
 $ cd {PROJECT PATH}
 $ ./manage.py runserver 0.0.0.0:8000
