@@ -2,6 +2,7 @@
 
 ~~~~
 $ npm install webpack --global
+$ npm install webpack --save-dev
 ~~~~
 
 
