@@ -62,6 +62,11 @@ autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=0 expandtab
 autocmd Filetype python setlocal tabstop=8 shiftwidth=4 softtabstop=4 expandtab
 
+" CtrlP ignoring list
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|node_modules|\.sass-cache|bower_components|build)$',
+  \ 'file': '\v\.(exe|so|dll)$'}
+
 " Memorize cursor position
 au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
