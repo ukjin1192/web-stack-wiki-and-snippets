@@ -24,8 +24,10 @@ $ npm install {MODULE NAME}@{VERSION} --save
 # Install package for development purpose (e.g. unit test or minification)
 $ npm install {MODULE NAME}@{VERSION} --save-dev
 
-# Remove
-$ npm remove {MODULE NAME}
+# Uninstall packaes - same with install command
+$ npm uninstall {MODULE NAME}@{VERSION} --global
+$ npm uninstall {MODULE NAME}@{VERSION} --save
+$ npm uninstall {MODULE NAME}@{VERSION} --save-dev
 
 # Check version of module
 $ npm list {MODULE NAME}
