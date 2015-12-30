@@ -59,7 +59,7 @@ set splitright      " Position vertically split window to right
 " Filetype customization
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=0 expandtab
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=0 expandtab
 autocmd Filetype python setlocal tabstop=8 shiftwidth=4 softtabstop=4 expandtab
 
 " CtrlP ignoring list
@@ -76,7 +76,7 @@ au BufReadPost *
 " Vim Key Mapping
 nmap <F1> :tabprev<CR>
 nmap <F2> :tabnext<CR>
-nmap <F3> :SyntasticCheck<CR>
+nmap <F3> gg=G<CR>
 nmap <F4> :wq<CR>
 nmap <F5> :!reset<CR>
 nmap <F6> :TagbarToggle<CR>
