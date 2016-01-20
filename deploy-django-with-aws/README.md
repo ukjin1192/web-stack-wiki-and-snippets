@@ -117,7 +117,7 @@ MX | No | {MAIL SERVER}
 - Select `db.t2.micro` for `DB Instance Class` and `No` for `Multi-AZ Deployment`
 - Put `DB Instance Identifier`, `Master Username`, `Master Password`
 - `Launch DB Instance`
-- Create new security group as following inbound rule
+- Edit inbound rule of security group as following
 
 Type | Protocol | Port | Source
 -----|----------|------|-------
