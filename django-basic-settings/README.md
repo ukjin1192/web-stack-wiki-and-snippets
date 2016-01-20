@@ -271,7 +271,7 @@ $ ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -
 
 ~~~~
 $ pip install uwsgi
-$ rm /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default /etc/nginx/sites-avilable/default
+$ rm /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 $ ln -s {PROJECT PATH}/conf/nginx/nginx.conf /etc/nginx/nginx.conf
 $ ln -s {PROJECT PATH}/conf/uwsgi/uwsgi.conf /etc/init/uwsgi.conf
 $ mkdir -p /etc/uwsgi/vassals/
