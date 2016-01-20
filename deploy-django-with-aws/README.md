@@ -30,6 +30,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 - EC2 menu > Load Balancers > Create Load Balancer
 - Put `Load Balancer name`
+- Assign security group same as EC2
 - Click `Next` until `4. Configure Health Check`
 - Set `Ping Path` value with `/health_check`
 - Click `Next` repeatedly and click `Create`
