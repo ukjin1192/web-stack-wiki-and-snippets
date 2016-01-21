@@ -1,6 +1,6 @@
 # Web stack architecture
 
-<img src="https://res.cloudinary.com/modupen/image/upload/v1448647133/github/Architecture.png" />
+<img src="https://res.cloudinary.com/modupen/image/upload/v1453354693/github/Architecture.png" />
 
 # Contents in this repository
 
@@ -66,6 +66,8 @@
 - **Route** 53 *(DNS)*
 - **RDS** *(MySQL)*
 - **ElastiCache** *(Redis)*
+- **S3** *(Storage)*
+- **CloudFront** *(CDN)*
 
 
 ## Utilities wiki and snippets
