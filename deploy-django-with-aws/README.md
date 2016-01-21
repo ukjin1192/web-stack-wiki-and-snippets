@@ -6,6 +6,8 @@
 - Route 53 *(DNS)*
 - RDS *(MySQL)*
 - ElastiCache *(Redis)*
+- S3 *(Storage)*
+- CloudFront *(CDN)*
 
 
 ## EC2
@@ -184,3 +186,40 @@ CACHES = {
 	}
 }
 ~~~~
+
+
+## S3
+
+- `S3 menu` > `Create Bucket`
+- Put `Bucket Name` and `Create`
+- Go to newly created bucket > `Propeties` > `Permissions` > `Add bucket policy`
+
+~~~~
+{
+	"Version": "2008-10-17",
+	"Id": "Policy1403276359730",
+	"Statement": [
+		{
+			"Sid": "Stmt1403276358543",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "*"
+			},
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::{BUCKET NAME}/*"
+		}
+	]
+}
+~~~~
+
+- `Save` policy > `Save` permissions
+- `Create Folder` and upload `sample.png`
+
+
+## CloudFront
+
+- `CloudFront menu` > `Create distribution` > Choose `Web`
+- Click `Origin Domain Name` and choose `bucket` under `Amazon S3 Buckets`
+- `Create distribution`
+- You can get `sample.png` from `{CLOUDFRONT DOMAIN NAME}/{FOLDER NAME}/sample.png`
+- Note that `{BUCKET NAME}` is not included in URL
