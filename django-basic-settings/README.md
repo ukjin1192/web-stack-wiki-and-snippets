@@ -55,6 +55,10 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
       'DEFAULT-CHARACTER-SET': 'utf8',
     },
   }
+  
+$ cd {PROJECT PATH}
+$ ./manage.py makemigrations {APP NAME}
+$ ./manage.py migrate --fake-initial
 ~~~~
 
 
@@ -78,6 +82,10 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
       'PORT': '5432',
     }
   }
+  
+$ cd {PROJECT PATH}
+$ ./manage.py makemigrations {APP NAME}
+$ ./manage.py migrate --fake-initial
 ~~~~
 
 
@@ -169,7 +177,8 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
     }
   }
 
-$ ./manage.py migrate
+$ ./manage.py makemigrations redisboard
+$ ./manage.py migrate redisboard
 $ ./manage.py collectstatic --noinput
 ~~~~
 
@@ -215,7 +224,8 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
   djcelery.setup_loader()
 
 $ cd {PROJECT PATH}
-$ ./manage.py migrate
+$ ./manage.py makemigrations djcelery
+$ ./manage.py migrate djcelery
 $ ./manage.py collectstatic --noinput
 ~~~~
 
