@@ -57,6 +57,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   }
   
 $ cd {PROJECT PATH}
+$ ./manage.py migrate
 $ ./manage.py makemigrations {APP NAME}
 $ ./manage.py migrate --fake-initial
 ~~~~
