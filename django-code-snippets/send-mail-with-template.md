@@ -1,3 +1,8 @@
+#### Edit security setting of account
+
+- Visit <a href="https://www.google.com/settings/security/lesssecureapps" target="_blank">here</a>
+- Update to `allow`
+
 #### `settings.py`
 
 ~~~~
