@@ -1,7 +1,9 @@
 #### Edit security setting of account
 
+- Visit <a href="https://accounts.google.com/DisplayUnlockCaptcha" target="_blank">here</a>
+- Click `Continue`
 - Visit <a href="https://www.google.com/settings/security/lesssecureapps" target="_blank">here</a>
-- Update to `allow`
+- Update to `Allow`
 
 #### `settings.py`
 
