@@ -1,13 +1,16 @@
 # Deploy django with amazon web service
 
-- EC2 *(OS: ubuntu 14.04 LTS)*
-- ELB *(Load balancing)*
-	- Adapt SSL certificate at ELB
-- Route 53 *(DNS)*
-- RDS *(MySQL)*
-- ElastiCache *(Redis)*
-- S3 *(Storage)*
-- CloudFront *(CDN)*
+- **EC2** *(OS: ubuntu 14.04 LTS)*
+	- Elastic IPs
+	- Elastic Load Balancer
+	- Adapt SSL ceritificate at ELB
+	- Auto Scaling Groups
+- **Route** 53 *(DNS)*
+- **RDS** *(MySQL)*
+- **ElastiCache** *(Redis)*
+- **S3** *(Storage)*
+- **CloudFront** *(CDN)*
+- **Cloud Watch** *(Scaling)*
 
 
 ## EC2
@@ -24,8 +27,12 @@ HTTPS | TCP | 443 | 0.0.0.0/0 (for nginx)
 Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 - `Review and Launch` > `Launch`
-- Create PEM file and save it into local directory *(DO NOT share or delete PEM file)*
-- `Elastic IPs` > `Allocate New Address` > `Allocate` > Right click IP > `Release addresses` > Select instance > `Release`
+- Create PEM file and save it into local directory *(DO NOT share or delete PEM file)*- 
+
+#### Elastic IPs
+
+- `EC2 menu` > `Elastic IPs` > `Allocate New Address` > `Yes, Allocate`
+- Right click IP > `Release addresses` > `Yes, Release` > Select instance > `Release`
 - From now on, you can make SSH connect to instance with PEM file 
 
 ~~~~
@@ -47,10 +54,9 @@ $ vi ~/.ssh/config
 $ ssh {NICKNAME}
 ~~~~
 
+#### Elastic Load Banlancer
 
-## ELB
-
-- EC2 menu > Load Balancers > Create Load Balancer
+- `EC2 menu` > `Load Balancers` > `Create Load Balancer`
 - Put `Load Balancer name`
 - Assign security group same as EC2
 - Click `Next` until `4. Configure Health Check`
@@ -69,8 +75,7 @@ server {
 }
 ~~~~
 
-
-#### Adapt SSL certificate at ELB 
+#### Adapt SSL certificate at ELB
 
 - *Certificate Manager is only available at US East region until now*
 - Create private key
@@ -117,6 +122,37 @@ server {
 	}
 }
 ~~~~
+ 
+#### Auto Scaling Groups
+
+- `EC2 menu` > `Instances`
+- Right click instance > `Image` > `Create Image` > Put `Image name` > `Create Image`
+- `EC2 menu` > `Auto Scaling Groups` > `Create Auto Scaling Group` > `Create launch configuration`
+- `My AMIs` > Select AMI > Select instance type > Put `Name` > Check `Monitoring` > Click `Advanced Details`
+- Fill out `User data` as initial script when instance created. For example,
+
+~~~~
+#!/bin/bash
+cd {PATH TO PROJECT PATH}
+fab run_uwsgi
+~~~~
+
+- `Next: Add Storage` > `Next: Configure Security Group`
+- `Select an existing security group` > Select same one with EC2 > `Review` > `Create launch configuration`
+- `Choose an existing key pair` > Select same one with EC2 > `Create launch configuration`
+- Put `Group name` > Click empty input of `Subnet` > Select all *(...northeast...)*
+- Click `Advanced Details` > Check `Load Balancing` > Click empty input of `Load Balancing` > Choose ELB
+- Check `Monitoring` > `Next: Configure scaling pollicies` 
+- Select `Use scaling policies to adjust the capacity of this group` > Put minimum and maximum number of instances. For example, 
+	- Scale between `1` and `4` instances.
+- Fill out `Increase Group Size`
+	- `Take the action` : `Add` `1` `instances`
+	- `Add new alarm` > Uncheck `Send a notification to` > Whenever `Average` of `CPU Utilization` Is `>=` `80` Percent For at least `1` consecutive period(s) of `1 Minute` > `Create alarm`
+- Fill out `Decrease Group Size`
+	- `Take the action` : `Remove` `1` `instances`
+	- `Add new alarm` > Uncheck `Send a notification to` > Whenever `Average` of `CPU Utilization` Is `<=` `10` Percent For at least `1` consecutive period(s) of `1 Minute` > `Create alarm`
+- `Next: Configure Notifications` > `Add notification` > `create topic` > Put `topic name` and `email address`
+- `Review` > `Create Auto Scaling Group`
 
 
 ## Route 53
@@ -244,3 +280,6 @@ CACHES = {
 - `Create distribution`
 - You can get `sample.png` from `{CLOUDFRONT DOMAIN NAME}/{FOLDER NAME}/sample.png`
 - Note that `{BUCKET NAME}` is not included in URL
+
+
+## Cloud Watch
