@@ -1,6 +1,6 @@
 # Web stack architecture
 
-<img src="" />
+<img src="https://res.cloudinary.com/modupen/image/upload/v1455361744/github/Architecture.png" />
 
 # Contents in this repository
 
