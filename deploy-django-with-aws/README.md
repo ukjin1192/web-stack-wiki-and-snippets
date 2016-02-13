@@ -25,7 +25,27 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 
 - `Review and Launch` > `Launch`
 - Create PEM file and save it into local directory *(DO NOT share or delete PEM file)*
-- From now on, you can make SSH connect to instance with PEM file
+- `Elastic IPs` > `Allocate New Address` > `Allocate` > Right click IP > `Release addresses` > Select instance > `Release`
+- From now on, you can make SSH connect to instance with PEM file 
+
+~~~~
+$ ssh -i {PATH TO PEM FILE} {EC2 PUBLIC DNS}
+
+OR,
+
+$ vi ~/.ssh/config
+
+    Host *
+      TCPKeepAlive yes
+      ServerAliveInterval 120
+
+    host {NICKNAME}
+      Hostname {EC2 PUBLIC DNS}
+      User ubuntu
+      IdentityFile {PATH TO PEM FILE}
+    
+$ ssh {NICKNAME}
+~~~~
 
 
 ## ELB
@@ -50,8 +70,9 @@ server {
 ~~~~
 
 
-#### Adapt SSL certificate at ELB
+#### Adapt SSL certificate at ELB 
 
+- *Certificate Manager is only available at US East region until now*
 - Create private key
 
 ~~~~~
