@@ -1,6 +1,6 @@
 # Web stack architecture
 
-<img src="https://res.cloudinary.com/modupen/image/upload/v1455284274/github/Architecture.png" />
+<img src="" />
 
 # Contents in this repository
 
@@ -58,16 +58,19 @@
 - Use **firebase** as realtime DB
 
 
-## Deploy django with amazon web service
+## Deploy django with Amazon Web Services
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
-- **ELB** *(Load balancing)*
-  - Adapt SSL certificate at ELB
+	- Elastic IPs
+	- Elastic Load Balancer
+	- Adapt SSL ceritificate at ELB
+	- Auto Scaling Groups
 - **Route** 53 *(DNS)*
 - **RDS** *(MySQL)*
 - **ElastiCache** *(Redis)*
 - **S3** *(Storage)*
 - **CloudFront** *(CDN)*
+- **Cloud Watch** *(Scaling)*
 
 
 ## Utilities wiki and snippets
