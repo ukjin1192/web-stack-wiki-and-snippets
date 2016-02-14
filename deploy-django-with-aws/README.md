@@ -127,14 +127,15 @@ server {
 
 - `EC2 menu` > `Instances`
 - Right click instance > `Image` > `Create Image` > Put `Image name` > `Create Image`
-- `EC2 menu` > `Auto Scaling Groups` > `Create Auto Scaling Group` > `Create launch configuration`
+- `EC2 menu` > `Launch Configurations` > `Create launch configuration`
 - `My AMIs` > Select AMI > Select instance type > Put `Name` > Check `Monitoring` > Click `Advanced Details`
 - Fill out `User data` as initial script when instance created. For example,
 
 ~~~~
 #!/bin/bash
 cd {PATH TO PROJECT PATH}
-fab run_uwsgi
+git pull origin master
+{SOME INITIAL COMMAND}
 ~~~~
 
 - `Next: Add Storage` > `Next: Configure Security Group`
@@ -155,9 +156,12 @@ fab run_uwsgi
 - `Review` > `Create Auto Scaling Group`
 - `EC2 menu` > `Instances`
 - Check new instace is initializing and terminate original instance
-- When `user data` script changed,
-	- `EC2 menu` > `Launch Configurations` > `Copy launch configuration` > `Advanced details` > Update `user data`
-	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Select `Launch Configuration`
+- **When `user data` script updated,**
+	- `EC2 menu` > `Launch Configurations` > `Copy launch configuration` > `Advanced details` > Update `user data` > `Select an existing security group` > Select same one with EC2 > `Review` > `Create launch configuration`
+	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration`
+- **When `models.py` updated, **
+	- Migrate DB at original instance > Create new `AMI` with this instance > Create new `Launch configuration` with new `AMI`
+	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration`
 
 
 ## Route 53
