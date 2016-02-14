@@ -56,8 +56,6 @@ $ vi ~/.zshrc
 
   setopt PROMPT_SUBST
   PROMPT='%(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%} ➜ %{$(pwd|grep --color=always /)%${#PWD}G%} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
-
-  export C_FORCE_ROOT='true'
   
 $ source ~/.zshrc
 ~~~~
