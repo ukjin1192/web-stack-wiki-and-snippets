@@ -1,6 +1,6 @@
 # Web stack architecture
 
-<img src="https://res.cloudinary.com/modupen/image/upload/v1455361744/github/Architecture.png" />
+<img src="https://res.cloudinary.com/modupen/image/upload/v1455467892/github/Architecture.png" />
 
 # Contents in this repository
 
@@ -61,16 +61,16 @@
 ## Deploy django with Amazon Web Services
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
-	- Elastic IPs
-	- Elastic Load Balancer
-	- Adapt SSL ceritificate at ELB
-	- Auto Scaling Groups
+	- Use fixed IP with **Elastic IPs**
+	- Load balnce with **ELB**
+	- Adapt SSL ceritificate at **ELB**
+	- **Auto Scaling Groups** with **Cloud Watch**
+	- Get access permission with **IAM**
 - **Route** 53 *(DNS)*
 - **RDS** *(MySQL)*
 - **ElastiCache** *(Redis)*
 - **S3** *(Storage)*
 - **CloudFront** *(CDN)*
-- **Cloud Watch** *(Scaling)*
 
 
 ## Utilities wiki and snippets
