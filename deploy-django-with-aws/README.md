@@ -153,6 +153,11 @@ fab run_uwsgi
 	- `Add new alarm` > Uncheck `Send a notification to` > Whenever `Average` of `CPU Utilization` Is `<=` `10` Percent For at least `1` consecutive period(s) of `1 Minute` > `Create alarm`
 - `Next: Configure Notifications` > `Add notification` > `create topic` > Put `topic name` and `email address`
 - `Review` > `Create Auto Scaling Group`
+- `EC2 menu` > `Instances`
+- Check new instace is initializing and terminate original instance
+- When `user data` script changed,
+	- `EC2 menu` > `Launch Configurations` > `Copy launch configuration` > `Advanced details` > Update `user data`
+	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Select `Launch Configuration`
 
 
 ## Route 53
@@ -283,3 +288,5 @@ CACHES = {
 
 
 ## Cloud Watch
+
+-
