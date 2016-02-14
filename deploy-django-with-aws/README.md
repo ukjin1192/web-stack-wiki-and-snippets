@@ -1,4 +1,4 @@
-# Deploy django with amazon web service
+# Deploy django with Amazon Web Services
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
 	- Elastic IPs
