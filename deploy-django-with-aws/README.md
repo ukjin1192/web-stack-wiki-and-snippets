@@ -1,16 +1,16 @@
 # Deploy django with Amazon Web Services
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
-	- Elastic IPs
-	- Elastic Load Balancer
-	- Adapt SSL ceritificate at ELB
-	- Auto Scaling Groups
+	- Use fixed IP with **Elastic IPs**
+	- Load balnce with **ELB**
+	- Adapt SSL ceritificate at **ELB**
+	- **Auto Scaling Groups** with **Cloud Watch**
+	- Get access permission with **IAM**
 - **Route** 53 *(DNS)*
 - **RDS** *(MySQL)*
 - **ElastiCache** *(Redis)*
 - **S3** *(Storage)*
 - **CloudFront** *(CDN)*
-- **Cloud Watch** *(Scaling)*
 
 
 ## EC2
@@ -29,7 +29,7 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 - `Review and Launch` > `Launch`
 - Create PEM file and save it into local directory *(DO NOT share or delete PEM file)*- 
 
-#### Elastic IPs
+#### Use fixed IP with Elastic IPs
 
 - `EC2 menu` > `Elastic IPs` > `Allocate New Address` > `Yes, Allocate`
 - Right click IP > `Release addresses` > `Yes, Release` > Select instance > `Release`
@@ -54,7 +54,7 @@ $ vi ~/.ssh/config
 $ ssh {NICKNAME}
 ~~~~
 
-#### Elastic Load Banlancer
+#### Load balnce with ELB
 
 - `EC2 menu` > `Load Balancers` > `Create Load Balancer`
 - Put `Load Balancer name`
@@ -122,8 +122,8 @@ server {
 	}
 }
 ~~~~
- 
-#### Auto Scaling Groups
+
+#### Auto Scaling Groups with Cloud Watch
 
 - `EC2 menu` > `Instances`
 - Right click instance > `Image` > `Create Image` > Put `Image name` > `Create Image`
@@ -135,7 +135,12 @@ server {
 #!/bin/bash
 cd {PATH TO PROJECT PATH}
 git pull origin master
-{SOME INITIAL COMMAND}
+	# OR git clone {REMOTE URL} if pull request requires username and password
+{INITIAL COMMANDS}
+	# Maybe fabric commands like 
+		# fab run_updatestaticfiles
+		# fab run_uwsgi
+		# fab run_celery
 ~~~~
 
 - `Next: Add Storage` > `Next: Configure Security Group`
@@ -159,9 +164,17 @@ git pull origin master
 - **When `user data` script updated,**
 	- `EC2 menu` > `Launch Configurations` > `Copy launch configuration` > `Advanced details` > Update `user data` > `Select an existing security group` > Select same one with EC2 > `Review` > `Create launch configuration`
 	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration`
-- **When `models.py` updated, **
-	- Migrate DB at original instance > Create new `AMI` with this instance > Create new `Launch configuration` with new `AMI`
-	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration`
+- **When `models.py` updated,**
+	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Set `min` and `max` as `1`
+	- Connect to remained instace and migrate DB
+	- Create new `AMI` with this instance
+	- Create new `Launch configuration` with this `AMI`
+	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration` to this `Launch configuration`
+	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Set `min` and `max` with original value
+
+#### Get access permission with IAM
+
+- `IAM` >
 
 
 ## Route 53
@@ -289,8 +302,3 @@ CACHES = {
 - `Create distribution`
 - You can get `sample.png` from `{CLOUDFRONT DOMAIN NAME}/{FOLDER NAME}/sample.png`
 - Note that `{BUCKET NAME}` is not included in URL
-
-
-## Cloud Watch
-
--
