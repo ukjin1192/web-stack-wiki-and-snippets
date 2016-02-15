@@ -2,10 +2,10 @@
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
 	- Use fixed IP with **Elastic IPs**
-	- Load balnce with **ELB**
+	- Load balance with **ELB**(Elastic Load Balancer)
 	- Adapt SSL ceritificate at **ELB**
 	- **Auto Scaling Groups** with **Cloud Watch**
-	- Get access permission with **IAM**
+	- Get access permission with **IAM**(Identity & Access Management)
 - **Route** 53 *(DNS)*
 - **RDS** *(MySQL)*
 - **ElastiCache** *(Redis)*
@@ -54,7 +54,7 @@ $ vi ~/.ssh/config
 $ ssh {NICKNAME}
 ~~~~
 
-#### Load balnce with ELB
+#### Load balance with ELB(Elastic Load Balancer)
 
 - `EC2 menu` > `Load Balancers` > `Create Load Balancer`
 - Put `Load Balancer name`
@@ -172,9 +172,10 @@ git pull origin master
 	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration` to this `Launch configuration`
 	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Set `min` and `max` with original value
 
-#### Get access permission with IAM
+#### Get access permission with IAM(Identity & Access Management)
 
-- `IAM` >
+- `IAM` > `Users` > `Create New Users` > Put `User Name` > Click `Show User Security Credentials` > Check `Access Key ID` and `Secret Access Key` > `Close`
+- Click newly created user > `Permissions` > `Attach Policy` > Select `AmazonEC2FullAccess` > `Attach Policy`
 
 
 ## Route 53
