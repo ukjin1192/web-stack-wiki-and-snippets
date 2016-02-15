@@ -176,6 +176,7 @@ git pull origin master
 
 - `IAM` > `Users` > `Create New Users` > Put `User Name` > Click `Show User Security Credentials` > Check `Access Key ID` and `Secret Access Key` > `Close`
 - Click newly created user > `Permissions` > `Attach Policy` > Select `AmazonEC2FullAccess` > `Attach Policy`
+- Get "how to access AWS instances programmatically" at <a href="https://github.com/ukjin1192/web-stack-wiki-and-snippets/blob/master/utilities-wiki-and-snippets/deploy-with-fabric.md" target="_blank">here</a>
 
 
 ## Route 53
