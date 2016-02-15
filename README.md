@@ -62,10 +62,10 @@
 
 - **EC2** *(OS: ubuntu 14.04 LTS)*
 	- Use fixed IP with **Elastic IPs**
-	- Load balnce with **ELB**
+	- Load balance with **ELB**(Elastic Load Balancer)
 	- Adapt SSL ceritificate at **ELB**
 	- **Auto Scaling Groups** with **Cloud Watch**
-	- Get access permission with **IAM**
+	- Get access permission with **IAM**(Identity & Access Management)
 - **Route** 53 *(DNS)*
 - **RDS** *(MySQL)*
 - **ElastiCache** *(Redis)*
