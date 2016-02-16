@@ -29,6 +29,11 @@ Custom TCP Rule | TCP | 8000 | 0.0.0.0/0 (for test)
 - `Review and Launch` > `Launch`
 - Create PEM file and save it into local directory *(DO NOT share or delete PEM file)*- 
 
+~~~~
+$ chmod 400 {PATH TO PEM FILE}
+~~~~
+
+
 #### Use fixed IP with Elastic IPs
 
 - `EC2 menu` > `Elastic IPs` > `Allocate New Address` > `Yes, Allocate`
