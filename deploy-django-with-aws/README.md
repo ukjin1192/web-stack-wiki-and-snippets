@@ -247,6 +247,9 @@ $ ./manage.py makemigrations {APPLICATION NAME}
 $ ./manage.py migrate {APPLICATION NAME}
 ~~~~
 
+- `RDS` > `Event Subscriptions` > `Create Event Subscription`
+- Put name and create topic > Select `source type` as `Instances` > Select instace > `Create`
+
 
 ## ElastiCache
 
