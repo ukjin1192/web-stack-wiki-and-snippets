@@ -27,6 +27,12 @@ $ cd /var/www/
 $ git clone {GIT REMOTE ORIGIN URL}
 ~~~~
 
+- If you want to remove existing packages,
+
+~~~~
+$ pip freeze | xargs pip uninstall -y
+~~~~
+
 - Install pip requirements
 
 ~~~~
