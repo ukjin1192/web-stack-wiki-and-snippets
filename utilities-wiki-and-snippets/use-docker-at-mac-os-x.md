@@ -20,7 +20,7 @@ $ docker images
 $ docker rmi {IMAGE NAME}
 
 # Create container
-$ docker run -i -t -p {EXPOSING PORT} --name {CONTAINER NAME} {IMAGE NAME} {COMMAND(e.g. /bin/bash)}
+$ docker run -i -t -p {EXPOSING PORT} --name {CONTAINER NAME} {IMAGE NAME:TAG} {COMMAND(e.g. /bin/bash)}
 
 # List-up whole container
 $ docker ps -a
