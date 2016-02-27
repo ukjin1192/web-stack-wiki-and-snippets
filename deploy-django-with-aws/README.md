@@ -138,14 +138,16 @@ server {
 
 ~~~~
 #!/bin/bash
-cd {PATH TO PROJECT PATH}
-git pull origin master
-	# OR git clone {REMOTE URL} if pull request requires username and password
-{INITIAL COMMANDS}
-	# Maybe fabric commands like 
-		# fab run_updatestaticfiles
-		# fab run_uwsgi
-		# fab run_celery
+cd {PROJECT PATH}
+git pull origin master (OR git clone {REMOTE URL} if pull request requires username and password)
+npm install
+cd {PATH TO PIP REQUIRMENTS FILE}
+pip install -r requirements.txt
+cd {PROJECT PATH}
+sudo service nginx restart
+fab update_staticfiles
+fab run_uwsgi
+fab run_celery
 ~~~~
 
 - `Next: Add Storage` > `Next: Configure Security Group`
@@ -165,17 +167,7 @@ git pull origin master
 - `Next: Configure Notifications` > `Add notification` > `create topic` > Put `topic name` and `email address`
 - `Review` > `Create Auto Scaling Group`
 - `EC2 menu` > `Instances`
-- Check new instace is initializing and terminate original instance
-- **When `user data` script updated,**
-	- `EC2 menu` > `Launch Configurations` > `Copy launch configuration` > `Advanced details` > Update `user data` > `Select an existing security group` > Select same one with EC2 > `Review` > `Create launch configuration`
-	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration`
-- **When `models.py` updated,**
-	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Set `min` and `max` as `1`
-	- Connect to remained instace and migrate DB
-	- Create new `AMI` with this instance
-	- Create new `Launch configuration` with this `AMI`
-	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Switch `Launch Configuration` to this `Launch configuration`
-	- `EC2 menu` > `Auto Scaling Groups` > `Edit` > Set `min` and `max` with original value
+- Check new instance is initializing and terminate original instance
 
 #### Get access permission with IAM(Identity & Access Management)
 
