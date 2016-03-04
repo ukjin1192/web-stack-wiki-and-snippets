@@ -1,16 +1,5 @@
 # Django basic settings
 
-#### Install django and helpful packages
-
-~~~~
-$ pip install django django-debug-toolbar django-extensions httplib2
-$ django-admin startproject {PROJECT NAME}
-$ cd {PROJECT PATH}
-$ ./manage.py runserver 0.0.0.0:8000
-~~~~
-
-- Check URL `{PUBLIC IP}:8000` on browser
-
 
 #### Clone sample django project if exist
 
@@ -38,6 +27,18 @@ $ pip freeze | xargs pip uninstall -y
 ~~~~
 $ pip install -r {PATH TO PIP REQUIREMENTS}/requirements.txt
 ~~~~
+
+
+#### Install django
+
+~~~~
+$ pip install django
+$ django-admin startproject {PROJECT NAME}
+$ cd {PROJECT PATH}
+$ ./manage.py runserver 0.0.0.0:8000
+~~~~
+
+- Check URL `{PUBLIC IP}:8000` on browser
 
 
 #### Connect with MySQL
