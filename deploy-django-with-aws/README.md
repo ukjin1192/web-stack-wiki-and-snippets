@@ -41,7 +41,7 @@ $ chmod 400 {PATH TO PEM FILE}
 - From now on, you can make SSH connect to instance with PEM file 
 
 ~~~~
-$ ssh -i {PATH TO PEM FILE} {EC2 PUBLIC DNS}
+$ ssh -i {PATH TO PEM FILE} ubuntu@{EC2 PUBLIC DNS}
 
 OR,
 
