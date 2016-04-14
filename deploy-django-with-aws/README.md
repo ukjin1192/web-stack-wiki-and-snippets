@@ -17,6 +17,9 @@
 
 - `EC2 menu` > `Launch Instance` > `Ubuntu Server 14.04 LTS`
 - Click `Next` until `6. Configure Security Group`
+
+> _If the application is CPU intensive, C level instance is more suitable than T level instance_
+
 - Set inbound rule for security group as following
 
 Type | Protocol | Port | Source
@@ -196,6 +199,9 @@ MX | No | {MAIL SERVER}
 - `RDS menu` > `Launch a DB Instance` > `MySQL`
 - Click `No` for `Multi-AZ deployment` option to use free-tier
 - Select `db.t2.micro` for `DB Instance Class` and `No` for `Multi-AZ Deployment`
+ 
+> _If the application mainly using ORM, high memory size would be required_
+
 - Put `DB Instance Identifier`, `Master Username`, `Master Password`
 - `Launch DB Instance`
 - Edit inbound rule of security group as following
