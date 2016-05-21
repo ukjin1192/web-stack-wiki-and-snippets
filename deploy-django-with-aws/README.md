@@ -85,7 +85,7 @@ server {
 
 #### Adapt SSL certificate at ELB
 
-- *Certificate Manager is only available at US East region until now*
+- Recommend to use *AWS Certificate Manager* instead of following steps
 - Create private key
 
 ~~~~~
