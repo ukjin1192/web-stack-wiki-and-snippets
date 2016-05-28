@@ -64,7 +64,7 @@ autocmd Filetype python setlocal tabstop=8 shiftwidth=4 softtabstop=4 expandtab
 
 " CtrlP ignoring list
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|node_modules|\.sass-cache|bower_components|build)$',
+  \ 'dir':  '\v[\/](\.git|node_modules|\.sass-cache|bower_components|build|_site)$',
   \ 'file': '\v\.(exe|so|dll)$'}
 
 " Memorize cursor position
