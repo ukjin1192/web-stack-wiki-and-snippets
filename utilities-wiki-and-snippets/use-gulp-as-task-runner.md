@@ -2,8 +2,10 @@
 
 ~~~~
 $ cd {PROJECT PATH}
+# Remove old version
+$ npm rm gulp --global
+$ npm install gulp-cli --global 
 $ npm init
-$ npm install gulp --global
 $ npm install gulp --save-dev
 ~~~~
 
