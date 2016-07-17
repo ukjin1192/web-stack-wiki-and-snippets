@@ -1,13 +1,13 @@
-#### Install fabric 
+#### Install `fabric` 
 
 ~~~~
 $ pip install fabric
-$ cd {PROJECT PATH}
+$ cd {PROJECT ROOT PATH}
 $ vi fabfile.py
 ~~~~
 
 
-#### `fabfile.py`
+#### Basic of `fabfile.py`
 
 ~~~~
 #!/bin/bash
@@ -35,16 +35,13 @@ def deploy():
 ~~~~
 
 
-#### Install boto to integrate with Amazon Web Services
+#### Install `boto` to integrate with Amazon Web Services
 
 ~~~~
 $ pip install boto3
-$ cd {PROJECT PATH}
-$ vi fabfile.py
 ~~~~
 
-
-#### `fabfile.py`
+- Edit `fabfile.py`
 
 ~~~~
 #!/bin/bash
@@ -84,3 +81,30 @@ def deploy():
     sudo("ps -ef | grep uwsgi | grep -v grep | awk '{print $2}' | xargs kill -15")
     sudo("uwsgi --uid www-data --gid www-data --emperor /etc/uwsgi/vassals --master --die-on-term --daemonize=" + ROOT_DIR + "/logs/uwsgi.log")
 ~~~~
+
+
+#### Separate local command with remote command
+
+~~~~
+from fabric.operations import local as lrun, run
+from fabric.api import task
+from fabric.state import env
+
+@task
+def localhost():
+    env.run = lrun
+    env.hosts = ['localhost']
+
+@task
+def remote():
+    env.run = run
+    env.hosts = ['some.remote.host']
+
+@task
+def install():
+    env.run('deployment command')
+~~~~
+
+- Install on localhost : `fab localhost install`
+- Install on remote : `fab remote install`
+
