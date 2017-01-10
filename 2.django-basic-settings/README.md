@@ -134,6 +134,18 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   )
 ~~~~
 
+#### Install Django extensions
+
+~~~~
+$ pip install django-extensions 
+~~~~
+
+- Commands
+
+~~~~
+$ ./manage.py shell_plus
+~~~~
+
 
 #### Use django-compressor *(Compress static files)*
 
