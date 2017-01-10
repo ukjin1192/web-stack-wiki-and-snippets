@@ -47,8 +47,8 @@ $ ./manage.py runserver 0.0.0.0:8000 [Ignore migration error messages]
 
 ~~~~
 $ pip install MySQL-python
-$ service mysql restart
-$ c [Enter password]
+$ sudo service mysql restart
+$ mysql -u root -p [Enter password]
 mysql $ CREATE DATABASE {DB NAME} DEFAULT CHARACTER SET utf8;
 mysql $ exit;
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
@@ -92,8 +92,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   }
   
 $ cd {PROJECT PATH}
-$ ./manage.py makemigrations {APP NAME}
-$ ./manage.py migrate --fake-initial
+$ ./manage.py migrate
 ~~~~
 
 
@@ -133,17 +132,6 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
   )
-  
-  # Django >= 1.9
-  
-  ...
-  'context_processors': [
-    ...
-    'django.template.context_processors.request',
-    ...
-  ]
-  
-$ 
 ~~~~
 
 
@@ -238,91 +226,40 @@ $ redis-cli shutdown            # Shutdown redis
 ~~~~
 
 
-#### Install celery and connect with django
-
-~~~~
-$ apt-get install rabbitmq-server
-$ pip install celery django-celery amqp
-$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
-
-  import djcelery
-
-  INSTALLED_APPS += (
-    'djcelery',
-  )
-
-  djcelery.setup_loader()
-  BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-
-$ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
-
-  import djcelery
-
-  djcelery.setup_loader()
-
-$ cd {PROJECT PATH}
-$ ./manage.py makemigrations djcelery
-$ ./manage.py migrate djcelery
-$ ./manage.py collectstatic --noinput
-~~~~
-
-
-#### Celery command
-
-- Check rabbitmq is running. If it is not running, type
-
-~~~~
-$ service rabbitmq-server start
-~~~~
-
-- If you want to run celery with root, add following code at shell configuration file such as `~/.zshrc`
-
-~~~~
-$ vi {SHELL CONFIGURATION FILE}
-
-  export C_FORCE_ROOT='true'
-
-$ source {SHELL CONFIGURATION FILE}
-~~~~
-
-~~~~
-$ cd {PROJECT PATH}
-$ ./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid   # Start celery as daemon
-$ ./manage.py celery worker --loglevel=debug    # Start celery with debug mode 
-$ ./manage.py celery purge                      # Flush celery tasks
-$ ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery
-~~~~
-
-
-#### Use cerely beat as cron task runner
-
-- Enroll tasks at Admin > Djcelery > Periodic tasks
-
-~~~~
-$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
-
-  CELERY_IMPORTS = ('utils.cron',)
-  CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-~~~~
-
-
-#### Celery beat command
-
-~~~~
-$ ./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach   # Start celery beat
-$ ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery beat
-~~~~
-
-
 #### Install uWSGI and configure Nginx and uWSGI settings
 
 ~~~~
 $ pip install uwsgi
 $ rm /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
+$ vi {PROJECT PATH}/conf/nginx/nginx.conf
+~~~~
+
+- Copy `nginx.conf` and customize `{{DOMAIN OR PUBLIC IP}}`, `{PROJECT NAME}` and `{PROJECT PATH}`
+
+~~~~
+$ chmod 775 {PROJECT PATH}/conf/nginx/nginx.conf
 $ ln -s {PROJECT PATH}/conf/nginx/nginx.conf /etc/nginx/nginx.conf
+~~~~
+
+- Copy `uwsgi.conf` and paste
+
+~~~~
+$ chmod 775 {PROJECT PATH}/conf/uwsgi/uwsgi.conf
 $ ln -s {PROJECT PATH}/conf/uwsgi/uwsgi.conf /etc/init/uwsgi.conf
+$ vi {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini
+~~~~
+
+- Copy `{PROJECT NAME}.ini` and customize `{PROJECT NAME}` and `{PROJECT PATH}`
+
+~~~~
+$ chmod 775 {PROJECT NAME}.ini
 $ mkdir -p /etc/uwsgi/vassals/
 $ ln -s {PROJECT PATH}/conf/uwsgi/{PROJECT NAME}.ini /etc/uwsgi/vassals/
+~~~~
+
+- Initiate log files
+
+~~~~
 $ mkdir -p {PROJECT PATH}/logs/
 $ cd {PROJECT PATH}/logs/
 $ touch uwsgi.log uwsgi.pid
@@ -348,13 +285,78 @@ $ ps -ef | grep uwsgi | grep -v grep | awk "{print $2}" | xargs kill -15'   # St
 ~~~~
 
 
-#### When number of CPU core or memory size changed
+#### Install celery and connect with django
 
-~~~~~
-$ vi nginx.conf
+~~~~
+$ apt-get install rabbitmq-server
+$ pip install django-celery==[Latest version] celery==[Same with django-celery version] amqp
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 
-  worker_processes = {NUMBER OF CPU CORE}
-  worker_connections = {MEMORY SIZE IN MEGA BYTES}
+  import djcelery
+
+  INSTALLED_APPS += (
+    'djcelery',
+  )
+
+  djcelery.setup_loader()
+  BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+
+$ vi {PROJECT PATH}/{PROJECT NAME}/wsgi.py
+
+  import djcelery
+
+  djcelery.setup_loader()
+
+$ cd {PROJECT PATH}
+$ ./manage.py makemigrations djcelery
+$ ./manage.py migrate djcelery
+~~~~
+
+
+#### Celery command
+
+- Check rabbitmq is running. If it is not running, type
+
+~~~~
+$ service rabbitmq-server start
+~~~~
+
+- If you want to run celery with root permission, add following code at shell configuration file such as `~/.zshrc`
+
+~~~~
+$ vi {SHELL CONFIGURATION FILE}
+
+  export C_FORCE_ROOT='true'
+
+$ source {SHELL CONFIGURATION FILE}
+~~~~
+
+~~~~
+$ cd {PROJECT PATH}
+$ ./manage.py celeryd_detach --logfile=logs/celery_daemon.log --pidfile=logs/celery_daemon.pid   # Start celery as daemon
+$ ./manage.py celery worker --loglevel=debug    # Start celery with debug mode 
+$ ./manage.py celery purge                      # Flush celery tasks
+$ ps auxww | grep 'celery worker' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery
+~~~~
+
+
+#### Use cerely beat as cron task runner
+
+- Enroll tasks at Admin > Djcelery > Periodic tasks
+
+~~~~
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
+
+  CELERY_IMPORTS = ('{Application}.{Python file that contains cron tasks}',) (e.g. 'utils.cron')
+  CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+~~~~
+
+
+#### Celery beat command
+
+~~~~
+$ ./manage.py celery beat --logfile=logs/celery_beat.log --pidfile=logs/celery_beat.pid --detach   # Start celery beat
+$ ps auxww | grep 'celery beat' | grep -v grep | awk '{print $2}' | xargs kill -15   # Stop celery beat
 ~~~~
 
 
