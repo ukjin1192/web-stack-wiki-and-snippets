@@ -399,3 +399,17 @@ $ pip install pillow
 ~~~~
 
 - Check available list 
+
+
+#### Install Django REST framework
+
+~~~~
+$ pip install djangorestframework
+$ pip install markdown
+$ pip install django-filter
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
+
+  INSTALLED_APPS += (
+    'rest_framework',
+  ) 
+~~~~
