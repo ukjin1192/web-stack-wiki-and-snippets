@@ -113,7 +113,7 @@ $ sudo service nginx start
 
 ~~~~
 $ sudo apt-get update
-$ sudo apt-get install mysql-server mysql-client [Enter root password]
+$ sudo apt-get install mysql-server mysql-client libmysqlclient-dev [Enter root password]
 $ sudo service mysql start
 ~~~~
 
