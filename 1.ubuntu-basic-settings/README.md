@@ -4,7 +4,7 @@
 
 ~~~~
 $ apt-get update
-$ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev python-pip curl
+$ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev python-pip curl sudo
 ~~~~
 
 
