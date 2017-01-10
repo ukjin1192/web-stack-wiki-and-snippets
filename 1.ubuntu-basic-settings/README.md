@@ -18,7 +18,7 @@ $ dpkg-reconfigure tzdata [Select city]
 #### Customize vim editor
 
 ~~~~
-$ apt-get install vim ctags cmake
+$ sudo apt-get install vim ctags cmake
 $ vi ~/.vimrc
 ~~~~
 
@@ -37,7 +37,7 @@ $ ./install.sh
 #### Install zshell and oh-my-zshell
 
 ~~~~
-$ apt-get install zsh
+$ sudo apt-get install zsh
 $ chsh -s `which zsh`
 ~~~~
 
@@ -64,7 +64,7 @@ $ source ~/.zshrc
 #### Install Fail2ban to protect from malicious attack
 
 ~~~~
-$ apt-get install fail2ban
+$ sudo apt-get install fail2ban
 $ cd /etc/fail2ban
 $ cp jail.conf jail.local
 $ vi jail.local
@@ -79,7 +79,7 @@ $ vi jail.local
   enabled = true
   destemail = {EMAIL ADDRESS}
 
-$ service fail2ban restart
+$ sudo service fail2ban restart
 ~~~~
 
 
@@ -95,14 +95,14 @@ $ git config --global user.email {EMAIL ADDRESS}
 
 - Only for ubuntu 14.04
 ~~~~
-$ apt-get install software-properties-common
+$ sudo apt-get install software-properties-common
 ~~~~
 
 - Then,
 ~~~~
-$ add-apt-repository ppa:nginx/stable [Enter]
-$ apt-get update
-$ apt-get install nginx
+$ sudo add-apt-repository ppa:nginx/stable [Enter]
+$ sudo apt-get update
+$ sudo apt-get install nginx
 $ sudo service nginx start
 ~~~~
 
@@ -112,14 +112,16 @@ $ sudo service nginx start
 #### Install MySQL
 
 ~~~~
-$ apt-get install mysql-server libmysqlclient-dev mysql-client-core-5.5 [Enter root password]
+$ sudo apt-get update
+$ sudo apt-get install mysql-server mysql-client [Enter root password]
 ~~~~
 
 
 #### Install PostgreSQL
 
 ~~~~
-$ apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib [Enter password]
+$ sudo apt-get update
+$ sudo apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib [Enter password]
 ~~~~
 
 
