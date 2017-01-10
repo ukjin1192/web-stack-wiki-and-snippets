@@ -32,10 +32,12 @@ $ pip install -r {PATH TO PIP REQUIREMENTS}/requirements.txt
 #### Install django
 
 ~~~~
+$ pip install --upgrade pip
 $ pip install django
+$ cd /var/www/
 $ django-admin startproject {PROJECT NAME}
 $ cd {PROJECT PATH}
-$ ./manage.py runserver 0.0.0.0:8000
+$ ./manage.py runserver 0.0.0.0:8000 [Ignore migration error messages]
 ~~~~
 
 - Check URL `{PUBLIC IP}:8000` on browser
@@ -46,7 +48,7 @@ $ ./manage.py runserver 0.0.0.0:8000
 ~~~~
 $ pip install MySQL-python
 $ service mysql restart
-$ mysql -u root -p [Enter password]
+$ c [Enter password]
 mysql $ CREATE DATABASE {DB NAME} DEFAULT CHARACTER SET utf8;
 mysql $ exit;
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
@@ -65,8 +67,6 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
   
 $ cd {PROJECT PATH}
 $ ./manage.py migrate
-$ ./manage.py makemigrations {APP NAME}
-$ ./manage.py migrate --fake-initial
 ~~~~
 
 
@@ -99,8 +99,16 @@ $ ./manage.py migrate --fake-initial
 
 #### When schema changed
 
+- At the first time
+
 ~~~~
-$ cd {PROJECT PATH}
+$ ./manage.py makemigrations {APP NAME}
+$ ./manage.py migrate --fake-initial
+~~~~
+
+- When already had migrations
+
+~~~~
 $ ./manage.py makemigrations {APP NAME}
 $ ./manage.py migrate {APP NAME}
 ~~~~
@@ -119,12 +127,14 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
     ...
   )
 
-  from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+  from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
-  TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+  TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
   )
+  
+$ 
 ~~~~
 
 
