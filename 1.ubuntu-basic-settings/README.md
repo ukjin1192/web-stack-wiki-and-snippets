@@ -93,16 +93,19 @@ $ git config --global user.email {EMAIL ADDRESS}
 
 #### Install nginx *(Recommend version upper than 1.6)*
 
-- Only for ubuntu 14.04
+- Only for ubuntu <= 14.04
+
 ~~~~
 $ sudo apt-get install software-properties-common
+$ sudo add-apt-repository ppa:nginx/stable [Enter]
 ~~~~
 
 - Then,
+
 ~~~~
-$ sudo add-apt-repository ppa:nginx/stable [Enter]
 $ sudo apt-get update
 $ sudo apt-get install nginx
+$ nginx -v [Check version]
 $ sudo service nginx start
 ~~~~
 
