@@ -127,12 +127,21 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
     ...
   )
 
+  # Django < 1.9
   from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
   TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
-    'django.core.context_processors.i18n',
   )
+  
+  # Django >= 1.9
+  
+  ...
+  'context_processors': [
+    ...
+    'django.template.context_processors.request',
+    ...
+  ]
   
 $ 
 ~~~~
@@ -177,13 +186,9 @@ $ ./manage.py collectstatic --noinput
 #### Install redis and connect with django
 
 ~~~~
-$ apt-get install redis-server
-$ pip install redis django-redis django-redisboard
+$ sudo apt-get install redis-server
+$ pip install redis django-redis
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
-
-  INSTALLED_APPS += (
-    'redisboard',
-  )
 
   CACHES = {
     'default': {
@@ -194,16 +199,30 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
       }
     }
   }
-
-$ ./manage.py makemigrations redisboard
-$ ./manage.py migrate redisboard
-$ ./manage.py collectstatic --noinput
 ~~~~
 
 
-#### Use redisboard at admin
+#### Use redisboard at admin (Only works with local redis server)
 
-- Go to admin site
+~~~~
+$ pip install django-redisboard
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
+
+  INSTALLED_APPS += (
+    'redisboard',
+  )
+
+$ ./manage.py makemigrations redisboard
+$ ./manage.py migrate redisboard
+~~~~
+
+- If you using django-compressor
+
+~~~~
+$ ./manage.py collectstatic --noinput
+~~~~
+
+- Go to admin page and login
 - `Redisboard` > `Redis Servers` > `Add Redis Server`
 - Label : `localhost` / Hostname : `127.0.0.1`
 - Check cache list at `Tools` > `Inspect`
