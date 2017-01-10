@@ -98,10 +98,12 @@ $ git config --global user.email {EMAIL ADDRESS}
 $ apt-get install software-properties-common
 ~~~~
 
+- Then,
 ~~~~
 $ add-apt-repository ppa:nginx/stable [Enter]
 $ apt-get update
 $ apt-get install nginx
+$ sudo service nginx start
 ~~~~
 
 - Check URL `{PUBLIC IP}:80` on browser
