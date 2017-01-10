@@ -114,6 +114,7 @@ $ sudo service nginx start
 ~~~~
 $ sudo apt-get update
 $ sudo apt-get install mysql-server mysql-client [Enter root password]
+$ sudo service mysql start
 ~~~~
 
 
@@ -122,6 +123,7 @@ $ sudo apt-get install mysql-server mysql-client [Enter root password]
 ~~~~
 $ sudo apt-get update
 $ sudo apt-get install libpq-dev build-dep python-psycopg2 postgresql postgresql-contrib [Enter password]
+$ sudo service postgresql start
 ~~~~
 
 
