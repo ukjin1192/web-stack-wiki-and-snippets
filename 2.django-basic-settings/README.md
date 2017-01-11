@@ -425,3 +425,25 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
     'rest_framework',
   ) 
 ~~~~
+
+
+#### Install django-silk *(live profiling and inspection tool)*
+
+~~~~
+$ pip install django-silk
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
+
+  # Django >= 1.10
+  MIDDLEWARE = ['silk.middleware.SilkyMiddleware', ] + MIDDLEWARE
+  
+  # Django <= 1.9
+  MIDDLEWARE_CLASSES = ('silk.middleware.SilkyMiddleware', ) + MIDDLEWARE_CLASSES
+  
+  INSTALLED_APPS += (
+    'silk',
+  ) 
+  
+$ cd {PROJECT PATH}
+$ ./manage.py makemigrations silk
+$ ./manage.py migrate silk
+~~~~
