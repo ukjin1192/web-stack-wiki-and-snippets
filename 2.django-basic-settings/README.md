@@ -501,3 +501,27 @@ $ {PROJECT PATH}/{PROJECT NAME}/urls.py
     - HTTP method: `POST`
     - parameters: `{'token': {EXISTING TOKEN}}`
     - return: `{'token': {NEW TOKEN}}`
+
+
+#### Use django-cors-headers to enable Cross-Origin-Resouce-Sharing
+
+~~~~
+$ pip install django-cors-headers
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
+
+  INSTALLED_APPS = (
+    ...
+    'corsheaders',
+    ...
+  )
+
+  MIDDLEWARE = [
+      ...
+      'corsheaders.middleware.CorsMiddleware',
+      'django.middleware.common.CommonMiddleware',
+      ...
+  ]
+  
+  CORS_ORIGIN_WHITELIST = (
+    '*.mysite.com',
+  )
