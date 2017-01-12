@@ -427,7 +427,7 @@ $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 ~~~~
 
 
-#### Install django-silk *(live profiling and inspection tool)*
+#### Use django-silk *(live profiling and inspection tool)*
 
 ~~~~
 $ pip install django-silk
@@ -447,3 +447,57 @@ $ cd {PROJECT PATH}
 $ ./manage.py makemigrations silk
 $ ./manage.py migrate silk
 ~~~~
+
+#### User JWT(Json Web Token) as authentication method in Django REST framework
+
+~~~~
+$ pip install djangorestframework-jwt
+$ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
+
+  REST_FRAMEWORK = {
+    ...
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+      ...
+      'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+      ...
+    )
+  }
+  
+$ {PROJECT PATH}/{PROJECT NAME}/urls.py
+
+  from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
+
+  urlpatterns = [
+    ...
+    url(
+        r'^api-token-auth/',                                                                        
+        obtain_jwt_token,                                                                           
+    ), 
+    url(                                                                                            
+        r'^api-token-refresh/',                                                                     
+        refresh_jwt_token                                                                           
+    ),
+    url(
+        r'^api-token-verify/', 
+        verify_jwt_token
+    ),
+    ...
+  ]
+~~~~
+
+- Usage
+  - Get token
+    - End-point: {PROJECT DOMAIN}/api-token-auth/
+    - HTTP method: POST
+    - parameters: {'username': {USERNAME}, 'password': {PASSWORD}}
+    - return: {'token': {TOKEN}}
+  - Verify token
+    - End-point: {PROJECT DOMAIN}/api-token-verify/
+    - HTTP method: POST
+    - parameters: {'token': {EXISTING TOKEN}}
+    - return: 200 OK or 400 Bad Request
+  - Refresh token
+    - End-point: {PROJECT DOMAIN}/api-token-refresh/
+    - HTTP method: POST
+    - parameters: {'token': {EXISTING TOKEN}}
+    - return: {'token': {NEW TOKEN}}
