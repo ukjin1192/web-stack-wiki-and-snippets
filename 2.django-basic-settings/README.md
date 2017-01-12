@@ -487,17 +487,17 @@ $ {PROJECT PATH}/{PROJECT NAME}/urls.py
 
 - Usage
   - Get token
-    - End-point: {PROJECT DOMAIN}/api-token-auth/
-    - HTTP method: POST
-    - parameters: {'username': {USERNAME}, 'password': {PASSWORD}}
-    - return: {'token': {TOKEN}}
+    - End-point: `{PROJECT DOMAIN}/api-token-auth/`
+    - HTTP method: `POST`
+    - parameters: `{'username': {USERNAME}, 'password': {PASSWORD}}`
+    - return: `{'token': {TOKEN}}`
   - Verify token
-    - End-point: {PROJECT DOMAIN}/api-token-verify/
-    - HTTP method: POST
-    - parameters: {'token': {EXISTING TOKEN}}
-    - return: 200 OK or 400 Bad Request
+    - End-point: `{PROJECT DOMAIN}/api-token-verify/`
+    - HTTP method: `POST`
+    - parameters: `{'token': {EXISTING TOKEN}}`
+    - return: `200 OK` or `400 Bad Request`
   - Refresh token
-    - End-point: {PROJECT DOMAIN}/api-token-refresh/
-    - HTTP method: POST
-    - parameters: {'token': {EXISTING TOKEN}}
-    - return: {'token': {NEW TOKEN}}
+    - End-point: `{PROJECT DOMAIN}/api-token-refresh/`
+    - HTTP method: `POST`
+    - parameters: `{'token': {EXISTING TOKEN}}`
+    - return: `{'token': {NEW TOKEN}}`
