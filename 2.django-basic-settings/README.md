@@ -95,17 +95,10 @@ $ cd {PROJECT PATH}
 $ ./manage.py migrate
 ~~~~
 
+- Note: If you using custom user model, it would be better to migrate after fill out your user model in `models.py`
+
 
 #### When schema changed
-
-- At the first time
-
-~~~~
-$ ./manage.py makemigrations {APP NAME}
-$ ./manage.py migrate --fake-initial
-~~~~
-
-- When already had migrations
 
 ~~~~
 $ ./manage.py makemigrations {APP NAME}
