@@ -292,9 +292,20 @@ $ ps -ef | grep uwsgi | grep -v grep | awk "{print $2}" | xargs kill -15'   # St
 
 #### Install celery and connect with django
 
+- Note: We should install `django-celery 3.2.1` manually and integrate it with `celery 3.2.25`
+
+~~~~
+$ pip install celery==3.2.25 amqp
+$ wget https://github.com/celery/django-celery/archive/v3.2.1.tar.gz
+$ tar xvfz v3.2.1.tar.gz
+$ cd django-celery-3.2.1
+$ python setup.py install
+~~~~
+
+- Integrate celery with django
+
 ~~~~
 $ apt-get install rabbitmq-server
-$ pip install django-celery==[Latest version] celery==[Same with django-celery version] amqp
 $ vi {PROJECT PATH}/{PROJECT NAME}/settings.py
 
   import djcelery
