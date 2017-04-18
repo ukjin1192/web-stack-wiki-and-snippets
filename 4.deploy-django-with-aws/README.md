@@ -310,3 +310,4 @@ CACHES = {
 - `Create distribution`
 - You can get `sample.png` from `{CLOUDFRONT DOMAIN NAME}/{FOLDER NAME}/sample.png`
 - Note that `{BUCKET NAME}` is not included in URL
+- When you'd like to update cache, go to `invalidations` tab
