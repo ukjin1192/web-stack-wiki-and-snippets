@@ -279,7 +279,10 @@ CACHES = {
 
 - `S3 menu` > `Create Bucket`
 - Put `Bucket Name` and `Create`
-- Go to newly created bucket > `Propeties` > `Permissions` > `Add bucket policy`
+- `Set properties` > `Set permissions` > `Next` > `Create`
+- Follow below steps ff you want to allow everyone to read files
+  - `Permissions` > `Access Control List` > `Manage public permissions` > Everyone Group > Set `Read` for both `Object access` and `Permissions access`
+  - `Permissions` > `Bucket Policy` > Copy and paste following snippet > `Save`
 
 ~~~~
 {
@@ -298,9 +301,6 @@ CACHES = {
 	]
 }
 ~~~~
-
-- `Save` policy > `Save` permissions
-- `Create Folder` and upload `sample.png`
 
 
 ## CloudFront
