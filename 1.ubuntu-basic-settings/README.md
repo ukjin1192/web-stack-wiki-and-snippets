@@ -137,7 +137,7 @@ $ sudo service postgresql start
 - Download solarized theme at <a href="https://github.com/tomislav/osx-terminal.app-colors-solarized" target="_blank">here</a> (e.g. `Solarized Dark.terminal`)
 - Open `Terminal` app
 - Open `Profile` by press key `Command` + `,` 
-- Click `settings` and import `.terminal` file
+- `Profile` tab > Click gear icon > import > `Solarized Dark.terminal` > Click theme > Set default
 
 
 #### Optimize key input
