@@ -48,9 +48,12 @@ $ ssh -i {PATH TO PEM FILE} ubuntu@{EC2 PUBLIC DNS}
 
 OR,
 
+$ 
 $ vi ~/.ssh/config
 
     Host *
+      UseKeychain yes
+      AddKeysToAgent yes
       TCPKeepAlive yes
       ServerAliveInterval 120
 
