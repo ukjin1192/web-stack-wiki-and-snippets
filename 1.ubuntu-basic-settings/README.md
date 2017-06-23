@@ -30,7 +30,7 @@ $ cd ~/.vim/bundle
 $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 $ vi [Ignore errors][:PluginInstall]
 $ cd ~/.vim/bundle/YouCompleteMe
-$ ./install.sh
+$ ./install.py
 ~~~~
 
 
@@ -164,3 +164,16 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 
 - Put password
 - Install some requirements
+
+- Install use useful libraries
+
+~~~~
+$ brew install python cmake zsh
+~~~~
+
+
+#### Install X-code command line developers tool
+
+~~~~
+$ xcode-select --install
+~~~~
