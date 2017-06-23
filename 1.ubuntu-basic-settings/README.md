@@ -168,7 +168,11 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 - Install use useful libraries
 
 ~~~~
-$ brew install python cmake zsh
+$ brew install python cmake zsh vim
+$ vi {Shell Configuration file}
+
+  alias vi='/usr/local/bin/vim'
+  alias vim='/usr/local/bin/vim'
 ~~~~
 
 
