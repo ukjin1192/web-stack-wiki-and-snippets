@@ -55,6 +55,7 @@ set encoding=utf-8  " Encoding
 set fileencodings=utf-8,euckr
 set laststatus=2    " Show status bar always
 set splitright      " Position vertically split window to right
+set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 
 " Filetype customization
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
