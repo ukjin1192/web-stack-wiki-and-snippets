@@ -4,7 +4,7 @@
 
 ~~~~
 $ apt-get update
-$ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev libssl-dev libffi-dev python-pip curl sudo wget
+$ apt-get install build-essential git python-dev libxml2-dev libxslt1-dev libssl-dev libffi-dev libcurl4-openssl-dev python-pip curl sudo wget
 $ pip install --upgrade pip
 ~~~~
 
