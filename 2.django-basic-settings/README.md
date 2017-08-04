@@ -32,7 +32,6 @@ $ pip install -r {PATH TO PIP REQUIREMENTS}/requirements.txt
 #### Install django
 
 ~~~~
-$ pip install --upgrade pip
 $ pip install django
 $ cd /var/www/
 $ django-admin startproject {PROJECT NAME}
