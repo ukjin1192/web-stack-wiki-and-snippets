@@ -62,6 +62,7 @@ $ vi ~/.ssh/config
       User ubuntu
       IdentityFile {PATH TO PEM FILE}
     
+$ ssh-add {PEM FILE}
 $ ssh {NICKNAME}
 ~~~~
 
