@@ -68,26 +68,31 @@ $ ssh {NICKNAME}
 
 #### Load balance with ELB(Elastic Load Balancer)
 
+- Issue SSL certificate through *Certificate Manager*
 - `EC2 menu` > `Load Balancers` > `Create Load Balancer`
+- Use `Application Load Balancer`
 - Put `Load Balancer name`
-- Assign security group same as EC2
-- Click `Next` until `4. Configure Health Check`
-- Set `Ping Path` value with `/health_check`
-- Click `Next` repeatedly and click `Create`
+- Click `Add listener` > HTTPS > Click `Next`
+- Check all subnet options in Availability Zones > Click `Next`
+- Choose Certificate that we made before
+- Assign security group same as EC2 > Click `Next`
+- Set name for Target group and set Protocol HTTPS
+- Set `Path` value `/health_check` for Health checks > Click `Next`
+- Choose EC2 instance
 - Edit `nginx.conf`
 
 ~~~~
 server {
-	...
+  ...
   location /health_check {
-  	access_log off;
+    access_log off;
     return 200;
   }
   ...
 }
 ~~~~
 
-#### Adapt SSL certificate at ELB
+#### Adapt SSL certificate at ELB (Deprecated)
 
 - Recommend to use *AWS Certificate Manager* instead of following steps
 - Create private key
