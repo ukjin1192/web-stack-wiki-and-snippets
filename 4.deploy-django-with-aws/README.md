@@ -69,28 +69,51 @@ $ ssh {NICKNAME}
 #### Load balance with ELB(Elastic Load Balancer)
 
 - Issue SSL certificate through *Certificate Manager*
-- `EC2 menu` > `Load Balancers` > `Create Load Balancer`
-- Use `Application Load Balancer`
-- Put `Load Balancer name`
-- Click `Add listener` > HTTPS > Click `Next`
-- Check all subnet options in Availability Zones > Click `Next`
-- Choose Certificate that we made before
+- `EC2 menu` > `Load Balancers` > `Create Load Balancer` > `Classic Load Balancer`
+- Put `Load Balancer name` > Click `Add` > Choose `HTTPS` > Click `Next`
 - Assign security group same as EC2 > Click `Next`
-- Set name for Target group and set Protocol HTTPS
-- Set `Path` value `/health_check` for Health checks > Click `Next`
+- Choose exsiting certificate that we made before
+- Set `Ping Path` value `/health_check` for Health checks > Click `Next`
 - Choose EC2 instance
 - Edit `nginx.conf`
 
 ~~~~
-server {
-  ...
-  location /health_check {
-    access_log off;
-    return 200;
+http {
+
+  server {
+  
+    listen 80;
+  
+    location /health_check {
+      access_log off;
+      return 200;
+    }
+    
+    location / {
+    
+      if ($http_x_forwarded_proto != 'https') {
+        return 301 https://$host$request_uri;
+      }
+    }
   }
-  ...
+
+  server {
+    
+    listen 443;
+    
+    location /health_check {
+      access_log off;
+      return 200;
+    }
+    
+    location / {
+      {COPY AND PASTE EXISTING CODE IN UPPER BLOCK WITH 80 PORT}
+    }
+  }
 }
 ~~~~
+
+- Go to Route53 > Edit record set > Type : A record > Alias target : ELB that we made right before
 
 #### Adapt SSL certificate at ELB (Deprecated)
 
