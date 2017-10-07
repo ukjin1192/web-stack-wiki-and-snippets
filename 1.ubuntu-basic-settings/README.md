@@ -89,6 +89,7 @@ $ sudo service fail2ban restart
 ~~~~
 $ git config --global user.name {USERNAME}
 $ git config --global user.email {EMAIL ADDRESS}
+$ git config --global core.editor "vim"
 ~~~~
 
 
