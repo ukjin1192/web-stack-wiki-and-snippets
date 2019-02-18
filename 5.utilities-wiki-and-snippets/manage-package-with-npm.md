@@ -1,10 +1,19 @@
 #### Install npm
 
-- Install `nodejs-legacy` to use `node` command instead of `nodejs`
+- 16.04 (Install `nodejs-legacy` to use `node` command instead of `nodejs`)
 
 ~~~~
 $ apt-get update
+# 
 $ apt-get install nodejs npm nodejs-legacy
+~~~~
+
+- 18.04
+
+~~~~
+$ sudo apt install curl
+$ curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+$ sudo apt install nodejs
 ~~~~
 
 
